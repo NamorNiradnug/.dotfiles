@@ -1,0 +1,119 @@
+/*
+ * author: NamorNiradnug <https://github.com/NamorNiradnug>
+ * shape based on Numix Rounded and Sweet <https://github.com/EliverLara/Sweet>
+ *
+ * Check http://doc.qt.io/qt-5/stylesheet-syntax.html especially the subtopics:
+ * The Style Sheet Syntax (http://doc.qt.io/qt-5/stylesheet-syntax.html)
+ * Qt Style Sheets Reference (http://doc.qt.io/qt-5/stylesheet-reference.html)
+ */
+
+* {
+    color: white;
+}
+
+#frame {
+  width:640px;
+  padding: 12px;
+  border-radius: 5px;
+  background-color: rgba(24, 27, 40, 0.7);
+
+  /* Workaround for Qt to get fixed size button*/
+  min-width:640px;
+  max-width:640px;
+}
+
+#inputLine {
+  padding: 2px;
+  font: 36px "Source Sans Pro Bold";
+  selection-color: white;
+  selection-background-color: #c50ed2;
+  border: none;
+  background-color: transparent;
+}
+
+#settingsButton {
+  border: none;
+  border-radius: 7px;
+  color : rgba(100, 100, 100, 0.6);
+  background-color: transparent;
+
+  /* Respect the frame border */
+  margin: 6px 6px 0px 0px;
+  border-top-right-radius: 6px;
+  border-bottom-left-radius: 10px;
+
+  /* Workaround for Qt to get fixed size button*/
+  min-width:14px;
+  min-height:14px;
+  max-width:14px;
+  max-height:14px;
+}
+
+#settingsButton:hover {
+  background-color: #181b28;
+}
+
+
+/********** ListViews ************/
+
+QListView {
+  color: rgba(250, 250, 250, 0.8);
+  background-color: transparent;
+}
+
+QListView::item:selected{
+  border: none;
+  background: rgba(100, 100, 100, 0.3);
+}
+
+QListView QScrollBar:vertical  {
+    width: 5px;
+    background: transparent;
+}
+
+QListView QScrollBar::handle:vertical  {
+  background: rgba(100, 100, 100, 0.2);
+  min-height: 24px;
+}
+
+QListView QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical,
+QListView QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical,
+QListView QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+  border: 0px;
+  width: 0px;
+  height: 0px;
+  background: transparent;
+}
+
+/********** actionList **********/
+
+QListView#actionList {
+  font-size: 20px;
+}
+
+QListView#actionList::item{
+  height:28px;
+}
+
+/********** resultsList **********/
+
+QListView#resultsList {
+  icon-size: 32px;
+  font-size: 26px;
+  font: 20px "Source Sans Pro Bold";
+  color: rgba(250, 250, 250, 0.8);
+  background-color: transparent;
+  border: none;
+}
+
+QListView#resultsList::item{
+  height: 48px;
+  padding: 4px;
+  border-bottom: 1px solid rgba(200, 200, 200, 0.5);
+}
+
+QListView#resultsList::item:selected{
+  border: none;
+  background: rgba(100, 100, 100, 0.3);
+  border-bottom: 1px solid rgba(200, 200, 200, 0.5);
+}

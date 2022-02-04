@@ -1,0 +1,13 @@
+button {
+    color: white;
+    background-color: rgba(100, 100, 100, 0.3);
+    border-width: 0px; 
+}
+
+button.flat {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+button:hover {
+    background-color: rgba(200, 200, 200, 0.2);
+}

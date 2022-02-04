@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Categories=Utility;
+Comment=A desktop agnostic launcher
+Exec=albert show
+GenericName=Launcher
+Icon=dr460nized-start.svg
+Name=Show Albert
+StartupNotify=false
+Type=Application
+Version=1.0
