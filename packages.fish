@@ -95,6 +95,7 @@ yay -Suy \
   pycharm-community-edition \
   python-lsp \
   python-pip \
+  qalculate-gtk \
   qt5ct \
   qt6ct \
   qtcreator \
