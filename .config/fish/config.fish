@@ -2,6 +2,8 @@
 # Hide welcome message
 set fish_greeting
 
+set -x EDITOR /usr/bin/nvim
+
 set VIRTUAL_ENV_DISABLE_PROMPT "1"
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
@@ -10,16 +12,11 @@ set -x MOZ_ENABLE_WAYLAND 1
 ## Export variable need for applications working well on wayland
 
 set -x QT_QPA_PLATFORMTHEME "qt5ct"
-set -x GTK_USE_PORTAL 0
-
-# makes libre use KF integration
-# disable because breaks some widgets 
-# set -x SAL_USE_VCLPLUGIN kf5
+set -x GTK_USE_PORTAL 1
 
 # Set settings for https://github.com/franciscolourenco/done
 set -U __done_min_cmd_duration 10000
 set -U __done_notification_urgency_level low
-
 
 ## Environment setup
 # Apply .profile: use this to put fish compatible .profile stuff in
