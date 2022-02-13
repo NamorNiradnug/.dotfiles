@@ -1,8 +1,3 @@
-"tabs width is 4 spaces"
-set tabstop=4
-set shiftwidth=4
-set expandtab
-
 " for nvim-colorizer
 set termguicolors
 
@@ -35,7 +30,21 @@ require 'nvim-treesitter.configs'.setup {
     }
 }
 
-require 'colorizer'.setup({'*'}, {css = true})
+require 'nvim-tree'.setup {}
+
+require 'colorizer'.setup({''}, { css = true} )
+
+require 'bufferline'.setup {
+    offsets = {
+        {
+            filetype = "NvimTree",
+						
+            text = "File Explorer",
+            highlight = "Directory",
+            text_align = "left"
+        }
+    }
+}
 EOF
 
 
