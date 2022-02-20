@@ -151,5 +151,7 @@ alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 alias dotfiles='git --git-dir=$HOME/.dotfiles/.git/ --work-tree=$HOME'
 
 if status --is-interactive
-   fastfetch
+    if ! set -q VIMRUNTIME
+    	fastfetch
+    end
 end

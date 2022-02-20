@@ -1,5 +1,6 @@
 "Exiting terminal mode with Esc"
 tnoremap <Esc> <C-\><C-n>
+tnoremap <C-W>
 inoremap <C-d> gD 
 map <Tab> :NvimTreeToggle<cr>
 

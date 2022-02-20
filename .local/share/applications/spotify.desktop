@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Spotify
+GenericName=Music Player
+Icon=spotify-client
+Exec=kitty --class spotify -e ncspot
+Terminal=false
+Categories=Audio;Music;Player;AudioVideo;
+

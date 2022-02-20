@@ -30,15 +30,13 @@ require 'nvim-treesitter.configs'.setup {
     }
 }
 
-require 'nvim-tree'.setup {}
-
 require 'colorizer'.setup({''}, { css = true} )
+require 'nvim-tree'.setup {}
 
 require 'bufferline'.setup {
     offsets = {
         {
             filetype = "NvimTree",
-						
             text = "File Explorer",
             highlight = "Directory",
             text_align = "left"

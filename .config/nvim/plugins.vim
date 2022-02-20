@@ -1,4 +1,4 @@
-call plug#begin()
+call plug#begin("~/.config/nvim/plugged/")
 
 " Languages support
 Plug 'q60/vim-brainfuck'
@@ -16,9 +16,9 @@ Plug 'andweeb/presence.nvim'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'navarasu/onedark.nvim'
 Plug 'crusoexia/vim-monokai'
-Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'akinsho/bufferline.nvim'
+" Plug 'datwaft/bubbly.nvim'
 
 call plug#end()
 
