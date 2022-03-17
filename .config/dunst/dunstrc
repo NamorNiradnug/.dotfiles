@@ -1,0 +1,26 @@
+[global]
+    origin = bottom-right
+    offset = 16x16
+    indicate_hidden = yes
+    frame_width = 3
+    frame_color = "#aaaaaa"
+    font = Monospace 12
+    icon_path = /usr/share/icons/BeautyLine/devices/scalable:/usr/share/icons/BeautyLine/actions/scalable:/usr/share/icons/BeautyLine/apps/scalable
+    corner_radius = 10
+
+[urgency_low]
+    background = "#181b28"
+    foreground = "#888888"
+    timeout = 3
+
+[urgency_normal]
+    background = "#181b28"
+    foreground = "#ffffff"
+    timeout = 10
+
+[urgency_critical]
+    background = "#900000"
+    foreground = "#ffffff"
+    frame_color = "#ff0000"
+    timeout = 0
+
