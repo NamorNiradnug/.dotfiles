@@ -1,7 +1,8 @@
 "color scheme"
 
 let g:onedark_config = {
-	\ 'transparent': v:true,  
+	\ 'transparent': v:true,
+    \ 'style': 'deep',
 \ }
 
 colorscheme onedark

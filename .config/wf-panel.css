@@ -1,13 +1,27 @@
 button {
     color: white;
-    background-color: rgba(100, 100, 100, 0.3);
+    background: rgba(100, 100, 100, 0.3);
     border-width: 0px; 
 }
 
 button.flat {
-    background-color: rgba(0, 0, 0, 0);
+    background: rgba(0, 0, 0, 0);
 }
 
 button:hover {
-    background-color: rgba(200, 200, 200, 0.2);
+    background: rgba(200, 200, 200, 0.2);
 }
+
+calendar {
+    border: none;
+    background: none;
+}
+
+calendar:selected {
+    color: #c50ed2;
+}
+
+popover,window {
+    background: rgba(24, 27, 40, 0.4);
+}
+

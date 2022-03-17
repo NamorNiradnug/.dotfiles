@@ -12,7 +12,8 @@ set -x MOZ_ENABLE_WAYLAND 1
 ## Export variable need for applications working well on wayland
 
 set -x QT_QPA_PLATFORMTHEME "qt5ct"
-# set -x GTK_USE_PORTAL 1
+set -x GTK_USE_PORTAL 1
+set -x GTK_THEME "Sweet"
 
 # Set settings for https://github.com/franciscolourenco/done
 set -U __done_min_cmd_duration 10000
