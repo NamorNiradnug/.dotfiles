@@ -23,5 +23,6 @@ calendar:selected {
 
 popover,window {
     background: rgba(24, 27, 40, 0.4);
+    box-shadow: none;
 }
 

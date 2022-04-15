@@ -19,10 +19,8 @@ Plug 'alvan/vim-closetag'
 " Look and feel
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'navarasu/onedark.nvim'
-Plug 'crusoexia/vim-monokai'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'akinsho/bufferline.nvim'
-" Plug 'datwaft/bubbly.nvim'
 
 call plug#end()
 

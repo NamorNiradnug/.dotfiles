@@ -49,7 +49,7 @@ require 'nvim-treesitter.configs'.setup {
 }
 
 require 'colorizer'.setup({''}, { css = true })
-require 'nvim-tree'.setup {}
+require 'nvim-tree'.setup()
 
 require 'bufferline'.setup {
     offsets = {
