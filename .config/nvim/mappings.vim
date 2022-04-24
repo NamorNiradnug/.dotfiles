@@ -2,7 +2,7 @@
 tnoremap <Esc> <C-\><C-n>
 tmap <C-W> <Esc><C-W>
 inoremap <C-d> gD 
-map <Tab> :NvimTreeToggle<cr>
+map <Tab> :NvimTreeFocus<cr>
 
 " Move to previous/next
 map <silent>    <A-Left>  :BufferLineCyclePrev<CR>
