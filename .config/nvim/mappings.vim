@@ -1,8 +1,8 @@
 "Exiting terminal mode with Esc"
 tnoremap <Esc> <C-\><C-n>
 tmap <C-W> <Esc><C-W>
-inoremap <C-d> gD 
 map <Tab> :NvimTreeFocus<cr>
+map U <C-r>
 
 " Move to previous/next
 map <silent>    <A-Left>  :BufferLineCyclePrev<CR>
