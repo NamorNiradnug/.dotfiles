@@ -1,0 +1,11 @@
+Diagnostics:
+  ClangTidy:
+    Add: modernize*, clang-analyzer*, performance*, readability*, misc*
+    Remove: modernize-use-trailing-return-type
+  UnusedIncludes: Strict
+
+InlayHints:
+  DeducedTypes: No
+
+Hover:
+  ShowAKA: Yes

@@ -13,6 +13,8 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+set guicursor+=c:ver100-iCursor
+
 function OnStartup()
     :split
     if winheight(0) > 15
