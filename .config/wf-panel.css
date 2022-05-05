@@ -1,7 +1,12 @@
+*:selected {
+    background: none;
+    border: none;
+}
+
 button {
     color: white;
     background: rgba(100, 100, 100, 0.3);
-    border-width: 0px; 
+    border-width: 0px;
 }
 
 button.flat {
@@ -21,7 +26,7 @@ calendar:selected {
     color: #c50ed2;
 }
 
-popover,window {
+popover,window,entry {
     background: rgba(24, 27, 40, 0.4);
     box-shadow: none;
 }

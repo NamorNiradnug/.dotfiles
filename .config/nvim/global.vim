@@ -5,7 +5,9 @@ set completeopt=menu,menuone,noselect
 
 set foldmethod=syntax
 set foldtext=getline(v:foldstart).'\ ...\ '.trim(getline(v:foldend))
-set fillchars=fold:\  
+set fillchars=fold:\ 
+set list
+set listchars=trail:•,tab:»\ 
 
 let g:presence_auto_update = 1
 
@@ -51,6 +53,10 @@ require 'nvim-treesitter.configs'.setup {
         enable = true,
         additional_vim_regex_highlighting = true,
     },
+    indent = {
+        enable = true,
+        disable = {"cpp"}
+    }
 }
 
 require 'colorizer'.setup({''}, { css = true })
