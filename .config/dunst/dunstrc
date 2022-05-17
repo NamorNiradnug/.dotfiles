@@ -4,9 +4,9 @@
     indicate_hidden = yes
     frame_width = 3
     frame_color = "#aaaaaa"
-    font = Monospace 12
+    font = JetBrains Mono 13
     icon_theme = custom
-    icon_path = /usr/share/icons/BeautyLine/devices/scalable:/usr/share/icons/BeautyLine/actions/scalable:/usr/share/icons/BeautyLine/apps/scalable:/usr/share/icons/candy-icons/apps/scalable:.local/share/icons/custom/actions/scalable
+    icon_path = .local/share/icons/BeautyLine/devices/scalable:.local/share/icons/BeautyLine/actions/scalable:.local/share/icons/BeautyLine/apps/scalable:/usr/share/icons/candy-icons/apps/scalable:.local/share/icons/custom/actions/scalable
     corner_radius = 10
 
 [urgency_low]

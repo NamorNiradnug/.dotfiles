@@ -9,6 +9,8 @@ set fillchars=fold:\
 set list
 set listchars=trail:•,tab:»\ 
 
+set mouse=a
+
 let g:presence_auto_update = 1
 
 let g:neoformat_python_autopep8 = {
@@ -23,13 +25,10 @@ let g:neoformat_python_autopep8 = {
 
 let g:neoformat_enabled_python = ['autopep8']
 let g:neoformat_enabled_nim = ['nimpretty']
+let g:neoformat_enabled_javascript = ['clang-format']
 
-let g:neoformat_enabled_javascript = ['clangformat']
-
-autocmd BufRead,BufNewFile *.html call jinja#AdjustFiletype()
-autocmd BufRead,BufNewFile *.html let b:AutoPairs = {'<!--' : '-->', '{%' : '%}', '{{' : '}}'}
-
-autocmd FileType css :ColorizerToggle
+let g:nvim_tree_git_hl = 1
+let g:nvim_tree_highlight_opened_files = 1
 
 lua << EOF
 require 'autosave'.setup {
@@ -55,17 +54,40 @@ require 'nvim-treesitter.configs'.setup {
     },
     indent = {
         enable = true,
-        disable = {"cpp"}
+        disable = {"cpp", "c"}
     }
 }
 
 require 'colorizer'.setup({''}, { css = true })
-require 'nvim-tree'.setup()
+
+require 'nvim-tree'.setup {
+    hijack_cursor = true,
+    renderer = {
+        indent_markers = {
+            enable = true,
+            icons = {
+                corner = "└ ",
+                edge = "│ ",
+                none = "  ",
+            }
+        }
+    },
+    diagnostics = {
+        enable = true,
+        show_on_dirs = true,
+        icons = {
+            hint = " ",
+            info = " ",
+            warning = " ",
+            error = " ",
+        },
+    },
+}
 
 require 'bufferline'.setup {
     offsets = {
         {
-            filetype = "NvimTree*",
+            filetype = "NvimTree",
             text = "File Explorer",
             highlight = "Directory",
             text_align = "left"
@@ -74,4 +96,9 @@ require 'bufferline'.setup {
 }
 
 EOF
+
+autocmd BufRead,BufNewFile *.html call jinja#AdjustFiletype()
+autocmd BufRead,BufNewFile *.html let b:AutoPairs = {'<!--' : '-->', '{%' : '%}', '{{' : '}}'}
+
+autocmd FileType css :ColorizerToggle
 

@@ -12,7 +12,6 @@ set -x MOZ_ENABLE_WAYLAND 1
 ## Export variable need for applications working well on wayland
 
 set -x QT_QPA_PLATFORMTHEME "qt5ct"
-set -x GTK_USE_PORTAL 1
 set -x GTK_THEME "Sweet"
 # set -x DRI_PRIME 1
 
@@ -150,3 +149,4 @@ if status --is-interactive
         fastfetch
     end
 end
+
