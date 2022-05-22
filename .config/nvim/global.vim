@@ -13,17 +13,6 @@ set mouse=a
 
 let g:presence_auto_update = 1
 
-let g:neoformat_python_autopep8 = {
-            \ 'exe': 'autopep8',
-            \ 'args': ['-s 4', '-E', '--max-line-length 120'],
-            \ 'replace': 1,
-            \ 'stdin': 1, 
-            \ 'env': ["DEBUG=1"],
-            \ 'valid_exit_codes': [0, 23],
-            \ 'no_append': 1,
-            \ }
-
-let g:neoformat_enabled_python = ['autopep8']
 let g:neoformat_enabled_nim = ['nimpretty']
 let g:neoformat_enabled_javascript = ['clang-format']
 
@@ -36,7 +25,7 @@ require 'autosave'.setup {
         execution_message = "AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"),
         events = {"InsertLeave", "TextChanged"},
         conditions = {
-            exists = true,
+            exists = false,
             filename_is_not = {},
             filetype_is_not = {},
             modifiable = true
@@ -66,7 +55,7 @@ require 'nvim-tree'.setup {
         indent_markers = {
             enable = true,
             icons = {
-                corner = "└ ",
+                corner = "╰╴",
                 edge = "│ ",
                 none = "  ",
             }
@@ -95,10 +84,32 @@ require 'bufferline'.setup {
     }
 }
 
+require 'onedark'.setup {
+    style = "deep",
+    transparent = true,
+    highlights = {
+        Folded = {fg = "$grey", fmt = "bold"},
+        Error = {fg = "$fg", fmt = "undercurl", sp = "$red"},
+        TSError = {fg = "$fg", fmt = "undercurl", sp = "$red"},
+        Macro = {fg = "$purple"},
+        VertSplit = {fg = "$bg3"},
+        NvimTreeVertSplit = {fg = "$bg3"},
+        DiagnosticVirtualTextError = {fg = "$red"},
+        DiagnosticVirtualTextHint = {fg = "$purple"},
+        DiagnosticVirtualTextInfo = {fg = "$cyan"},
+        DiagnosticVirtualTextWarn = {fg = "$yellow"},
+        FloatBorder = {fg = "$blue", bg = "$none"},
+        NormalFloat = {fg = "$fg", bg = "$none"},
+   },
+    diagnostics = {
+        background = false,
+    }
+}
+
+require 'nvim-autopairs'.setup()
 EOF
 
 autocmd BufRead,BufNewFile *.html call jinja#AdjustFiletype()
-autocmd BufRead,BufNewFile *.html let b:AutoPairs = {'<!--' : '-->', '{%' : '%}', '{{' : '}}'}
 
 autocmd FileType css :ColorizerToggle
 

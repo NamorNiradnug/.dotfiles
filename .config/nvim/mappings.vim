@@ -3,6 +3,8 @@ tnoremap <Esc> <C-\><C-n>
 tmap <C-W> <Esc><C-W>
 map <Tab> :NvimTreeFocus<cr>
 map U <C-r>
+map <C-y> "+y
+map <C-p> "+p
 
 " Move to previous/next
 map <silent>    <A-Left>  :BufferLineCyclePrev<CR>

@@ -105,21 +105,17 @@ alias l.="exa -a | egrep '^\.'"                                     # show only 
 alias ip="ip -color"
 
 # Common use
-alias grubup="sudo update-grub"
 alias fixpacman="sudo rm /var/lib/pacman/db.lck"
 alias tarnow='tar -acf '
 alias untar='tar -xvf '
 alias wget='wget -c '
-alias rmpkg="sudo pacman -Rdd"
 alias psmem='ps auxf | sort -nr -k 4'
 alias psmem10='ps auxf | sort -nr -k 4 | head -10'
-alias upd='/usr/bin/update'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias hw='hwinfo --short'                                   # Hardware Info
 alias big="expac -H M '%m\t%n' | sort -h | nl"              # Sort installed packages according to size in MB
 alias gitpkg='pacman -Q | grep -i "\-git" | wc -l'          # List amount of -git packages
 
@@ -130,7 +126,6 @@ alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/p
 alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
 
 alias uwu='sudo'
-alias tb='nc termbin.com 9999'
 
 # Cleanup orphaned packages
 alias cleanup='sudo pacman -Rns (pacman -Qtdq)'
@@ -138,11 +133,12 @@ alias cleanup='sudo pacman -Rns (pacman -Qtdq)'
 # Get the error messages from journalctl
 alias jctl="journalctl -p 3 -xb"
 
-# Recent installed packages
-alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
-
 # .dotfiles repo
 alias dotfiles='git --git-dir=$HOME/.dotfiles/.git/ --work-tree=$HOME'
+
+if test -n "$DESKTOP_SESSION"
+    set -x (gnome-keyring-daemon --start | string split "=")
+end
 
 if status --is-interactive
     if ! set -q VIMRUNTIME

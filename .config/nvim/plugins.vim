@@ -4,7 +4,13 @@ call plug#begin("~/.config/nvim/plugged/")
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'ray-x/lsp_signature.nvim'
 Plug 'p00f/clangd_extensions.nvim'
+" Plug 'hrsh7th/cmp-vsnip'
+" Plug 'hrsh7th/vim-vsnip'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'rafamadriz/friendly-snippets'
 
 " Languages support
 Plug 'q60/vim-brainfuck'
@@ -18,9 +24,8 @@ Plug 'iamcco/markdown-preview.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'andweeb/presence.nvim'
 Plug 'sbdchd/neoformat'
-Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
-Plug 'editorconfig/editorconfig-vim'
+Plug 'windwp/nvim-autopairs'
 
 " Look and feel
 Plug 'norcalli/nvim-colorizer.lua'
