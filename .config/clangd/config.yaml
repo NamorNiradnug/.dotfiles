@@ -1,11 +1,8 @@
 Diagnostics:
   ClangTidy:
-    Add: modernize*, clang-analyzer*, performance*, readability*, misc*
-    Remove: modernize-use-trailing-return-type
+    Add: [readability-*, llvm-*, modernize-*, google-*, misc-*, bugprone-*, clang-*, performance-*]
+    Remove: [modernize-use-trailing-return-type, readability-magic-numbers, readability-uppercase-literal-suffix]
   UnusedIncludes: Strict
-
-InlayHints:
-  DeducedTypes: No
 
 Hover:
   ShowAKA: Yes

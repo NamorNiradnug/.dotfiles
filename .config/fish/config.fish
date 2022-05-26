@@ -136,10 +136,6 @@ alias jctl="journalctl -p 3 -xb"
 # .dotfiles repo
 alias dotfiles='git --git-dir=$HOME/.dotfiles/.git/ --work-tree=$HOME'
 
-if test -n "$DESKTOP_SESSION"
-    set -x (gnome-keyring-daemon --start | string split "=")
-end
-
 if status --is-interactive
     if ! set -q VIMRUNTIME
         fastfetch

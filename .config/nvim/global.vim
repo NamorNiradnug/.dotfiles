@@ -1,8 +1,8 @@
 " for nvim-colorizer
 set termguicolors
 
-set completeopt=menu,menuone,noselect
-
+set completeopt=menu,menuone,noselect,preview
+set updatetime=500
 set foldmethod=syntax
 set foldtext=getline(v:foldstart).'\ ...\ '.trim(getline(v:foldend))
 set fillchars=fold:\ 

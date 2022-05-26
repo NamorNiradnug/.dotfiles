@@ -4,10 +4,8 @@ call plug#begin("~/.config/nvim/plugged/")
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'ray-x/lsp_signature.nvim'
+Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 Plug 'p00f/clangd_extensions.nvim'
-" Plug 'hrsh7th/cmp-vsnip'
-" Plug 'hrsh7th/vim-vsnip'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'rafamadriz/friendly-snippets'
@@ -17,6 +15,7 @@ Plug 'q60/vim-brainfuck'
 Plug 'alaviss/nim.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'hiphish/jinja.vim'
+Plug 'fladson/vim-kitty'
 
 " Just useful stuff
 Plug 'pocco81/autosave.nvim'
