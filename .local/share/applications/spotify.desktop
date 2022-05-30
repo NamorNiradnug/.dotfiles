@@ -3,7 +3,8 @@ Type=Application
 Name=Spotify
 GenericName=Music Player
 Icon=spotify-client
-Exec=kitty --class spotify -e ncspot
+Exec=xdg-open https://open.spotify.com/
 Terminal=false
-Categories=Audio;Music;Player;AudioVideo;
+NoDisplay=true
+Categories=Audio;Music;Player;
 

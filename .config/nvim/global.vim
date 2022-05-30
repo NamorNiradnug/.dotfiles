@@ -100,6 +100,9 @@ require 'onedark'.setup {
         DiagnosticVirtualTextWarn = {fg = "$yellow"},
         FloatBorder = {fg = "$blue", bg = "$none"},
         NormalFloat = {fg = "$fg", bg = "$none"},
+        TSVariable = {fg = "$red"},
+        Special = {fg = "$red", fmt = "bold"},
+        SpecialChar = {fg = "$red", fmt = "bold"},
    },
     diagnostics = {
         background = false,
@@ -112,4 +115,5 @@ EOF
 autocmd BufRead,BufNewFile *.html call jinja#AdjustFiletype()
 
 autocmd FileType css :ColorizerToggle
+autocmd FileType css :highlight clear TSError
 
