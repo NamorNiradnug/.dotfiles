@@ -1,7 +1,7 @@
 Diagnostics:
   ClangTidy:
     Add: [readability-*, llvm-*, modernize-*, google-*, misc-*, bugprone-*, clang-*, performance-*]
-    Remove: [modernize-use-trailing-return-type, readability-magic-numbers, readability-uppercase-literal-suffix]
+    Remove: [modernize-use-trailing-return-type, readability-magic-numbers, readability-uppercase-literal-suffix, bugprone-easily-swappable-parameters]
   UnusedIncludes: Strict
 
 Hover:

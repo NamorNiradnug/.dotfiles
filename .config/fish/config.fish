@@ -8,12 +8,10 @@ set VIRTUAL_ENV_DISABLE_PROMPT "1"
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 set -x MOZ_ENABLE_WAYLAND 1
-
+set -x MOX_GTK_THEME "Sweet:dark"
 ## Export variable need for applications working well on wayland
 
 set -x QT_QPA_PLATFORMTHEME "qt5ct"
-set -x GTK_THEME "Sweet"
-# set -x DRI_PRIME 1
 
 # Set settings for https://github.com/franciscolourenco/done
 set -U __done_min_cmd_duration 10000
