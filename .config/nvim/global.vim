@@ -16,9 +16,6 @@ let g:presence_auto_update = 1
 let g:neoformat_enabled_nim = ['nimpretty']
 let g:neoformat_enabled_javascript = ['clang-format']
 
-let g:nvim_tree_git_hl = 1
-let g:nvim_tree_highlight_opened_files = 1
-
 lua << EOF
 require 'autosave'.setup {
         enabled = true,
@@ -55,7 +52,7 @@ require 'nvim-tree'.setup {
         indent_markers = {
             enable = true,
             icons = {
-                corner = "╰╴",
+                corner = "╰",
                 edge = "│ ",
                 none = "  ",
             }
@@ -71,6 +68,9 @@ require 'nvim-tree'.setup {
             error = " ",
         },
     },
+    git = {
+        enable = true,
+    }
 }
 
 require 'bufferline'.setup {
@@ -110,6 +110,27 @@ require 'onedark'.setup {
 }
 
 require 'nvim-autopairs'.setup()
+require("presence"):setup({
+    auto_update         = true,
+    neovim_image_text   = "The One True Text Editor",
+    main_image          = "neovim",
+    client_id           = "793271441293967371",
+    log_level           = nil,
+    debounce_timeout    = 10,
+    enable_line_number  = false,
+    blacklist           = {},
+    buttons             = true,
+    file_assets         = {},
+
+    editing_text        = "Editing %s",
+    file_explorer_text  = "Browsing %s",
+    git_commit_text     = "Committing changes",
+    plugin_manager_text = "Managing plugins",
+    reading_text        = "Reading %s",
+    workspace_text      = "Working on %s",
+    line_number_text    = "Line %s out of %s",
+})
+
 EOF
 
 autocmd BufRead,BufNewFile *.html call jinja#AdjustFiletype()

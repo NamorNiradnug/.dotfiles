@@ -9,15 +9,16 @@ set expandtab
 set guicursor+=c:ver100-iCursor
 
 function OnStartup()
-    :split
+    split
     if winheight(0) > 15
         :resize 15
     endif
-    :set winfixheight
+    set winfixheight
     :term
-    :NvimTreeToggle
-    :autocmd BufWinEnter,WinEnter term://* startinsert
+    set nonumber
+    NvimTreeToggle
+    autocmd BufWinEnter,WinEnter term://* startinsert
 endfunction
 
 " spawn terminal on startup
-:autocmd VimEnter * call OnStartup()
+autocmd VimEnter * call OnStartup()

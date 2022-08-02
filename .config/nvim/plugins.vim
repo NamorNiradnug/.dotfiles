@@ -31,6 +31,7 @@ Plug 'norcalli/nvim-colorizer.lua'
 Plug 'navarasu/onedark.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'akinsho/bufferline.nvim'
+Plug 'andweeb/presence.nvim'
 
 call plug#end()
 

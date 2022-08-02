@@ -207,7 +207,7 @@ def handleQuery(query) -> list:
 def notify(
     msg: str,
     app_name: str = __title__,
-    image=str(icon_path),
+    image="bluetooth",
 ):
     Notify.init(app_name)
     n = Notify.Notification.new(app_name, msg, image)
