@@ -53,8 +53,8 @@ require 'nvim-tree'.setup {
             enable = true,
             icons = {
                 corner = "╰",
-                edge = "│ ",
-                none = "  ",
+                edge = "│",
+                none = " ",
             }
         }
     },

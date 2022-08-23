@@ -16,6 +16,7 @@ Plug 'alaviss/nim.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'hiphish/jinja.vim'
 Plug 'fladson/vim-kitty'
+Plug 'ron-rs/ron.vim'
 
 " Just useful stuff
 Plug 'pocco81/autosave.nvim'

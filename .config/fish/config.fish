@@ -10,8 +10,6 @@ set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 ## Export variable need for applications working well on wayland
 set -x MOZ_ENABLE_WAYLAND 1
 
-set -x SDL_VIDEODRIVER "wayland"
-
 set -x QT_QPA_PLATFORMTHEME "qt5ct"
 
 # Set settings for https://github.com/franciscolourenco/done
