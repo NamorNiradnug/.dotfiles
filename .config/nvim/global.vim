@@ -4,10 +4,6 @@ set termguicolors
 set completeopt=menu,menuone,noselect,preview
 set updatetime=500
 set foldmethod=syntax
-set foldtext=getline(v:foldstart).'\ ...\ '.trim(getline(v:foldend))
-set fillchars=fold:\ 
-set list
-set listchars=trail:•,tab:»\ 
 
 set mouse=a
 
@@ -16,23 +12,16 @@ let g:presence_auto_update = 1
 let g:neoformat_enabled_nim = ['nimpretty']
 let g:neoformat_enabled_javascript = ['clang-format']
 
-lua << EOF
-require 'autosave'.setup {
-        enabled = true,
-        execution_message = "AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"),
-        events = {"InsertLeave", "TextChanged"},
-        conditions = {
-            exists = false,
-            filename_is_not = {},
-            filetype_is_not = {},
-            modifiable = true
-        },
-        write_all_buffers = false,
-        on_off_commands = true,
-        clean_command_line_interval = 0,
-        debounce_delay = 135
-}
+function AutoSave()
+    if &ma && &mod
+        :update
+        echo bufname() .. " saved at ".. strftime("%H:%M:%S")
+    endif
+endfunction
 
+au InsertLeave,TextChanged * nested call AutoSave()
+
+lua << EOF
 require 'nvim-treesitter.configs'.setup {
     highlight = {
         enable = true,
@@ -53,6 +42,7 @@ require 'nvim-tree'.setup {
             enable = true,
             icons = {
                 corner = "╰",
+                item = "├",
                 edge = "│",
                 none = " ",
             }
@@ -74,13 +64,28 @@ require 'nvim-tree'.setup {
 }
 
 require 'bufferline'.setup {
-    offsets = {
-        {
-            filetype = "NvimTree",
-            text = "File Explorer",
-            highlight = "Directory",
-            text_align = "left"
-        }
+    options = {
+        numbers = "ordinal",
+        indicator = {
+            icon = " ",
+            style = "none"
+        },
+        separator_style = {'┃', '┃'},
+        diagnostics = "nvim_lsp",
+        diagnostics_update_in_insert = true,
+        diagnostics_indicator = function(count, level)
+            local icon = level:match("error") and "  " or " "
+            return " " .. icon .. count
+        end,
+        offsets = {
+            {
+                filetype = "NvimTree",
+                text = "File Explorer",
+                highlight = "Directory",
+                text_align = "left",
+                separator = "┃"
+            }
+        },
     }
 }
 
@@ -92,8 +97,8 @@ require 'onedark'.setup {
         Error = {fg = "$fg", fmt = "undercurl", sp = "$red"},
         TSError = {fg = "$fg", fmt = "undercurl", sp = "$red"},
         Macro = {fg = "$purple"},
-        VertSplit = {fg = "$bg3"},
-        NvimTreeVertSplit = {fg = "$bg3"},
+        VertSplit = {fg = "$fg"},
+        NvimTreeVertSplit = {fg = "$fg"},
         DiagnosticVirtualTextError = {fg = "$red"},
         DiagnosticVirtualTextHint = {fg = "$purple"},
         DiagnosticVirtualTextInfo = {fg = "$cyan"},
@@ -103,14 +108,21 @@ require 'onedark'.setup {
         TSVariable = {fg = "$red"},
         Special = {fg = "$red", fmt = "bold"},
         SpecialChar = {fg = "$red", fmt = "bold"},
-   },
+        StatusLine = {fg = "$fg", bg = "$none"},
+        StatusLineNC = {fg = "$fg", bg = "$none"},
+        CursorLine = {bg = "$none"},
+        CursorLineNr = {fg = "$orange", fmt = "bold"},
+
+        User1 = {fg = "$bg0", bg = "$fg", fmt = "bold"},
+    },
     diagnostics = {
         background = false,
     }
 }
 
 require 'nvim-autopairs'.setup()
-require("presence"):setup({
+
+require('presence'):setup({
     auto_update         = true,
     neovim_image_text   = "The One True Text Editor",
     main_image          = "neovim",

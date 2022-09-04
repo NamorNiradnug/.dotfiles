@@ -19,7 +19,6 @@ Plug 'fladson/vim-kitty'
 Plug 'ron-rs/ron.vim'
 
 " Just useful stuff
-Plug 'pocco81/autosave.nvim'
 Plug 'iamcco/markdown-preview.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'andweeb/presence.nvim'

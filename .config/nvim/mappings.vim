@@ -33,14 +33,14 @@ tmap  <A-<> <Esc><A-<>
 tmap  <A->> <Esc><A->>
 " Goto buffer in position...
 tmap  <A-1> <Esc><A-1>
-tmap  <A-2> <Esc> <A-2>
-tmap  <A-3> <Esc> <A-3>
-tmap  <A-4> <Esc> <A-4>
-tmap  <A-5> <Esc> <A-5>
-tmap  <A-6> <Esc> <A-6>
-tmap  <A-7> <Esc> <A-7>
-tmap  <A-8> <Esc> <A-8>
-tmap  <A-9> <Esc> <A-9>
+tmap  <A-2> <Esc><A-2>
+tmap  <A-3> <Esc><A-3>
+tmap  <A-4> <Esc><A-4>
+tmap  <A-5> <Esc><A-5>
+tmap  <A-6> <Esc><A-6>
+tmap  <A-7> <Esc><A-7>
+tmap  <A-8> <Esc><A-8>
+tmap  <A-9> <Esc><A-9>
 " Close buffer
 tmap  <A-q> <Esc><A-q>
 

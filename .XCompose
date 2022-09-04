@@ -52,7 +52,7 @@ include "/usr/share/X11/locale/en_US.UTF-8/Compose"
 
 # Esperanto letters with circumflex
 <Multi_key> <x> <s>                    : "ŝ"   U015D
-<Multi_key> <x> <S>                    : "Ŝ"   U015C   
+<Multi_key> <x> <S>                    : "Ŝ"   U015C
 <Multi_key> <x> <j>                    : "ĵ"   U0135
 <Multi_key> <x> <J>                    : "Ĵ"   U0134
 <Multi_key> <x> <c>                    : "ĉ"   U0109
