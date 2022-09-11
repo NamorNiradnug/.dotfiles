@@ -17,14 +17,17 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'hiphish/jinja.vim'
 Plug 'fladson/vim-kitty'
 Plug 'ron-rs/ron.vim'
+Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown'
 
 " Just useful stuff
-Plug 'iamcco/markdown-preview.nvim'
+Plug 'lervag/vimtex'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'andweeb/presence.nvim'
 Plug 'sbdchd/neoformat'
 Plug 'alvan/vim-closetag'
 Plug 'windwp/nvim-autopairs'
+Plug 'rhysd/open-pdf.vim'
 
 " Look and feel
 Plug 'norcalli/nvim-colorizer.lua'

@@ -183,4 +183,4 @@ require"clangd_extensions".setup {
 lspconfig.pylsp.setup { on_attach = on_attach, handlers = handlers }
 lspconfig.nimls.setup { on_attach = on_attach, handlers = handlers }
 lspconfig.quick_lint_js.setup { on_attach = on_attach, handlers = handlers }
-
+lspconfig.texlab.setup{ on_attach = on_attach, handlers = handlers }

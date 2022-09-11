@@ -11,11 +11,11 @@ let g:presence_auto_update = 1
 
 let g:neoformat_enabled_nim = ['nimpretty']
 let g:neoformat_enabled_javascript = ['clang-format']
+let g:vim_markdown_math = 1
 
 function AutoSave()
     if &ma && &mod
-        :update
-        echo bufname() .. " saved at ".. strftime("%H:%M:%S")
+        silent update
     endif
 endfunction
 
@@ -26,6 +26,7 @@ require 'nvim-treesitter.configs'.setup {
     highlight = {
         enable = true,
         additional_vim_regex_highlighting = true,
+        disable = {"latex"}
     },
     indent = {
         enable = true,
@@ -65,6 +66,7 @@ require 'nvim-tree'.setup {
 
 require 'bufferline'.setup {
     options = {
+        tab_size = 10,
         numbers = "ordinal",
         indicator = {
             icon = " ",
@@ -74,7 +76,7 @@ require 'bufferline'.setup {
         diagnostics = "nvim_lsp",
         diagnostics_update_in_insert = true,
         diagnostics_indicator = function(count, level)
-            local icon = level:match("error") and "  " or " "
+            local icon = level:match("error") and " " or " "
             return " " .. icon .. count
         end,
         offsets = {
@@ -86,6 +88,28 @@ require 'bufferline'.setup {
                 separator = "┃"
             }
         },
+        groups = {
+            items = {
+                {
+                    name = " Headers",
+                    matcher = function(buf)
+                        return buf.filename:match("%.h") or buf.filename:match("%.hpp")
+                    end
+                },
+                {
+                    name = " C++ Source",
+                    matcher = function(buf)
+                        return buf.filename:match("%.cpp")
+                    end
+                },
+                {
+                    name = " C Source",
+                    matcher = function(buf)
+                        return buf.filename:match("%.c")
+                    end
+                }
+            }
+        }
     }
 }
 
@@ -98,6 +122,7 @@ require 'onedark'.setup {
         TSError = {fg = "$fg", fmt = "undercurl", sp = "$red"},
         Macro = {fg = "$purple"},
         VertSplit = {fg = "$fg"},
+        MatchParen = {bg = "$bg2", fmt = "bold"},
         NvimTreeVertSplit = {fg = "$fg"},
         DiagnosticVirtualTextError = {fg = "$red"},
         DiagnosticVirtualTextHint = {fg = "$purple"},
@@ -112,7 +137,6 @@ require 'onedark'.setup {
         StatusLineNC = {fg = "$fg", bg = "$none"},
         CursorLine = {bg = "$none"},
         CursorLineNr = {fg = "$orange", fmt = "bold"},
-
         User1 = {fg = "$bg0", bg = "$fg", fmt = "bold"},
     },
     diagnostics = {
