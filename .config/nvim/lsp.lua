@@ -94,7 +94,11 @@ cmp.setup({
 
 -- insert braces on autocompletion
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({map_char = {tex = ''}}))
+cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({
+    filetypes = {
+        markdown = false
+    }
+}))
 
 -- general
 local lspconfig = require 'lspconfig'
@@ -183,4 +187,4 @@ require"clangd_extensions".setup {
 lspconfig.pylsp.setup { on_attach = on_attach, handlers = handlers }
 lspconfig.nimls.setup { on_attach = on_attach, handlers = handlers }
 lspconfig.quick_lint_js.setup { on_attach = on_attach, handlers = handlers }
-lspconfig.texlab.setup{ on_attach = on_attach, handlers = handlers }
+lspconfig.texlab.setup{ on_attach = on_attach, handlers = handlers, filetypes = {"tex", "markdown"} }

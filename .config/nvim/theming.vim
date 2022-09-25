@@ -8,8 +8,11 @@ set expandtab
 
 set foldtext=getline(v:foldstart).'\ ...\ '.trim(getline(v:foldend))
 set fillchars=fold:\ ,stl:━,stlnc:━,vert:┃
+set display+=lastline
 set list
-set listchars=trail:•,tab:»\ 
+set listchars=trail:•,tab:»\ ,multispace:┊\ \ \ ,extends:…,precedes:…
+set nowrap
+set whichwrap+=<,>,h,l
 
 augroup CursorLine
     au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
@@ -38,5 +41,4 @@ function OnStartup()
 endfunction
 
 autocmd TermOpen * setlocal statusline=━%{%Block('\ '..b:term_title)%} | set nomodified | set nonumber | set nobuflisted
-" spawn terminal on startup
 autocmd VimEnter * nested call OnStartup()

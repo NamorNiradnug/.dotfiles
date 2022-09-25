@@ -167,6 +167,8 @@ require('presence'):setup({
     line_number_text    = "Line %s out of %s",
 })
 
+
+
 EOF
 
 autocmd BufRead,BufNewFile *.html call jinja#AdjustFiletype()
