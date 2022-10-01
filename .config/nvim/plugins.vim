@@ -28,6 +28,7 @@ Plug 'sbdchd/neoformat'
 Plug 'alvan/vim-closetag'
 Plug 'windwp/nvim-autopairs'
 Plug 'rhysd/open-pdf.vim'
+Plug 'jbyuki/venn.nvim'
 
 " Look and feel
 Plug 'norcalli/nvim-colorizer.lua'

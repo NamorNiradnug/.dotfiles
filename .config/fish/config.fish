@@ -116,8 +116,8 @@ alias egrep='egrep --color=auto'
 alias big="expac -H M '%m\t%n' | sort -h | nl"              # Sort installed packages according to size in MB
 alias gitpkg='pacman -Q | grep -i "\-git" | wc -l'          # List amount of -git packages
 
-function mdtopdf --argument file
-    pandoc -t pdf -V fontenc=T2A $file -o $file.pdf
+function mdview --argument file
+    pandoc -t pdf -V fontenc=T2A $file -o $file.pdf && xdg-open $file.pdf
 end
 
 # Get fastest mirrors

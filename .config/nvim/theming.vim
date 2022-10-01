@@ -10,7 +10,7 @@ set foldtext=getline(v:foldstart).'\ ...\ '.trim(getline(v:foldend))
 set fillchars=fold:\ ,stl:━,stlnc:━,vert:┃
 set display+=lastline
 set list
-set listchars=trail:•,tab:»\ ,multispace:┊\ \ \ ,extends:…,precedes:…
+set listchars=trail:•,tab:»\ ,leadmultispace:┊\ \ \ ,extends:…,precedes:…
 set nowrap
 set whichwrap+=<,>,h,l
 
@@ -20,7 +20,7 @@ augroup CursorLine
 augroup END
 
 function Block(s)
-    return '%1*' .. a:s .. '%*'
+    return '%#User1#' .. a:s .. '%*'
 endfunction
 
 const statuslinestr = "━%{%Block('%f%m%r%h%w%q')%}%=%{%Block('%l:%c')%}━"
