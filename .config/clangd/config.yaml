@@ -8,3 +8,6 @@ Diagnostics:
 
 Hover:
   ShowAKA: Yes
+
+CompileFlags:
+  Add: [-std=c++20]

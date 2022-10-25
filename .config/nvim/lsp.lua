@@ -139,9 +139,9 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', '<C-d>', vim.lsp.buf.type_definition, opts)
     vim.keymap.set('n', '<F12>', vim.lsp.buf.rename, opts)
     vim.keymap.set('n', '<C-l>', vim.lsp.buf.code_action, {})
-    vim.keymap.set('n', '<C-f>', vim.lsp.buf.formatting, {})
-    vim.keymap.set('i', '<C-f>', vim.lsp.buf.formatting, {})
-    vim.api.nvim_create_user_command("Format", vim.lsp.buf.formatting, {})
+    vim.keymap.set('n', '<C-f>', vim.lsp.buf.format, {})
+    vim.keymap.set('i', '<C-f>', vim.lsp.buf.format, {})
+    vim.api.nvim_create_user_command("Format", vim.lsp.buf.format, {})
     vim.api.nvim_command("highlight clear TSError")
     vim.api.nvim_create_autocmd("CursorHold", {
         buffer = bufnr,
@@ -187,4 +187,14 @@ require"clangd_extensions".setup {
 lspconfig.pylsp.setup { on_attach = on_attach, handlers = handlers }
 lspconfig.nimls.setup { on_attach = on_attach, handlers = handlers }
 lspconfig.quick_lint_js.setup { on_attach = on_attach, handlers = handlers }
-lspconfig.texlab.setup{ on_attach = on_attach, handlers = handlers, filetypes = {"tex", "markdown"} }
+lspconfig.texlab.setup { on_attach = on_attach, handlers = handlers, filetypes = {"tex", "markdown"} }
+lspconfig.arduino_language_server.setup {
+    cmd = {
+        "arduino-language-server",
+        "-cli-config", "~/.arduino15/arduino-cli.yaml",
+        "-fqbn", "arduino:avr:uno",
+        "-cli", "arduino-cli",
+        "-clangd", "clangd"
+    },
+    on_attach = on_attach, handlers = handlers
+}

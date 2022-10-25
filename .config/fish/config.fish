@@ -32,6 +32,7 @@ end
 
 __add_to_path ~/.local/bin
 __add_to_path ~/.nimble/bin
+__add_to_path ~/go/bin
 
 ## Starship prompt
 if status --is-interactive
@@ -117,7 +118,7 @@ alias big="expac -H M '%m\t%n' | sort -h | nl"              # Sort installed pac
 alias gitpkg='pacman -Q | grep -i "\-git" | wc -l'          # List amount of -git packages
 
 function mdview --argument file
-    pandoc -t pdf -V fontenc=T2A $file -o $file.pdf && xdg-open $file.pdf
+    pandoc -t pdf --pdf-engine xelatex $file -o $file.pdf && xdg-open $file.pdf
 end
 
 # Get fastest mirrors
@@ -145,3 +146,4 @@ else if status --is-interactive
     end
 end
 
+source ~/.config/fish/completions/arduino.fish
