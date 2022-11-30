@@ -118,9 +118,10 @@ require 'onedark'.setup {
     transparent = true,
     highlights = {
         Folded = {fg = "$grey", fmt = "bold"},
-        Error = {fg = "$fg"}, --, fmt = "undercurl", sp = "$red"},
-        --["@error"] = {fg = "$fg", fmt = "undercurl", sp = "$red"},
+        Error = {fg = "$none"}, --, fmt = "undercurl", sp = "$red"},
+        ["@error"] = {fg = "$none"}, -- fmt = "undercurl", sp = "$red"},
         Macro = {fg = "$purple"},
+        ["@macro"] = {fg = "$purple"},
         VertSplit = {fg = "$fg"},
         MatchParen = {bg = "$bg2", fmt = "bold"},
         NvimTreeVertSplit = {fg = "$fg"},
@@ -166,12 +167,11 @@ require('presence'):setup({
     workspace_text      = "Working on %s",
     line_number_text    = "Line %s out of %s",
 })
-
-
-
 EOF
 
 autocmd BufRead,BufNewFile *.html call jinja#AdjustFiletype()
+
+autocmd FileType markdown set wrap linebreak
 
 autocmd FileType css :ColorizerToggle
 autocmd FileType css :highlight clear TSError

@@ -179,11 +179,13 @@ require"clangd_extensions".setup {
             vim.keymap.set('n', '<F2>', function() vim.api.nvim_command("ClangdSwitchSourceHeader") end)
         end,
         handlers = handlers,
-        cmd = { "clangd", "--header-insertion=never", "--completion-style=detailed", "--clang-tidy" }
+        cmd = { 
+            "clangd", "--header-insertion=never", "--completion-style=detailed", "--clang-tidy",
+            "--function-arg-placeholders", "--log=verbose", "--enable-config" }
     }
 }
 
---lspconfig.ccls.setup  { on_attach = on_attach, handlers = handlers, init_options = { cache = { directory = ".ccls-cache" } } }
+-- lspconfig.ccls.setup  { on_attach = on_attach, handlers = handlers, init_options = { cache = { directory = ".ccls-cache" } } }
 lspconfig.pylsp.setup { on_attach = on_attach, handlers = handlers }
 lspconfig.nimls.setup { on_attach = on_attach, handlers = handlers }
 lspconfig.quick_lint_js.setup { on_attach = on_attach, handlers = handlers }
