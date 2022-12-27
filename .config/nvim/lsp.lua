@@ -1,6 +1,7 @@
 -- completion
 local icons = {
-    Class = "ﴯ ",
+    Array = "[]",
+    Class = " ",
     Color = " ",
     Constant = " ",
     Constructor = " ",
@@ -12,13 +13,17 @@ local icons = {
     File = " ",
     Folder = " ",
     Function = " ",
+    Key = " ",
     Keyword = " ",
     Method = "ƒ ",
     Module = " ",
+    Namespace = " ",
+    Null = "∅ ",
     Operator = " ",
     Property = "ﰠ ",
     Reference = " ",
     Snippet = "﬌ ",
+    String = " ",
     Struct = " ",
     Text = " ",
     TypeParameter = " ",
@@ -29,12 +34,22 @@ local icons = {
 
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
+local navic = require 'nvim-navic'
 
 luasnip.config.setup({
     enable_autosnippets = true
 })
 
 require("luasnip.loaders.from_vscode").lazy_load()
+
+navic.setup {
+    icons = icons,
+    highlight = true,
+    separator = " > ",
+    depth_limit = 0,
+    depth_limit_indicator = "..",
+    safe_output = true
+}
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -68,6 +83,7 @@ cmp.setup({
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'buffer' },
+        { name = 'nvim_lsp_signature_help' }
     }),
     formatting = {
         format = function(entry, vim_item)
@@ -129,7 +145,7 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
     local opts = { buffer = bufnr }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
@@ -157,6 +173,10 @@ local on_attach = function(_, bufnr)
         vim.diagnostic.open_float(nil, opts)
         end
     })
+    if client.server_capabilities.documentSymbolProvider then
+        navic.attach(client, bufnr)
+        vim.cmd("setlocal winbar=%{%v:lua.require'nvim-navic'.get_location()%}")
+    end
 end
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }

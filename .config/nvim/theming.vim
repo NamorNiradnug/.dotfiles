@@ -20,10 +20,33 @@ augroup CursorLine
 augroup END
 
 function Block(s)
-    return '%#User1#' .. a:s .. '%*'
+    if type(a:s) == 1 && len(a:s) != 0
+        return '%#User1#' .. a:s .. '%*'
+    else
+        return ""
+    endif
 endfunction
 
-const statuslinestr = "━%{%Block('%f%m%r%h%w%q')%}%=%{%Block('%l:%c')%}━"
+
+lua << EOF
+function treesitter_statusline()
+    -- return require'nvim-treesitter'.statusline({
+    --     type_patterns = {
+    --         'function', 'method', 'struct', "class",
+    --         "interface", "table", "namespace",
+    --         "if_statement", "for_statement", "for_in_statement", "while_statement", "for_range_loop",
+    --         "if_condition", "variable"
+    --     },
+    --     separator = "  "
+    -- })
+    return require"nvim-navic".get_location()
+end
+EOF
+
+const filename_block = Block('%f%m%r%h%w%q')
+const pos_block = Block('%l:%c')
+
+const statuslinestr = "━" .. filename_block .. "━%=" .. pos_block .. "━"
 
 set statusline=%{%&ft=='NvimTree'?'%=':statuslinestr%}
 

@@ -15,7 +15,12 @@ let g:vim_markdown_math = 1
 
 function AutoSave()
     if &ma && &mod
-        silent update
+        silent! update
+        if !&mod
+            echo "Saved" @%
+        else
+            echo "Cannot save" @%
+        endif
     endif
 endfunction
 
@@ -122,6 +127,11 @@ require 'onedark'.setup {
         ["@error"] = {fg = "$none"}, -- fmt = "undercurl", sp = "$red"},
         Macro = {fg = "$purple"},
         ["@macro"] = {fg = "$purple"},
+        ["@variable.builtin"] = {fmt = "italic"},
+        ["@type.builtin"] = {fg = "$yellow"},
+        ["@type.qualifier"] = {fg = "$purple"},
+        ["@type.definition"] = {fg = "$yellow"},
+        ["@storageclass"] = {fg = "$purple"},
         VertSplit = {fg = "$fg"},
         MatchParen = {bg = "$bg2", fmt = "bold"},
         NvimTreeVertSplit = {fg = "$fg"},
@@ -131,6 +141,7 @@ require 'onedark'.setup {
         DiagnosticVirtualTextWarn = {fg = "$yellow"},
         FloatBorder = {fg = "$blue", bg = "$none"},
         NormalFloat = {fg = "$fg", bg = "$none"},
+        LspSignatureActiveParameter = {bg = "$grey", fmt = "underline"},
         ["@variable"] = {fg = "$red"},
         Special = {fg = "$red", fmt = "bold"},
         SpecialChar = {fg = "$red", fmt = "bold"},
@@ -139,11 +150,19 @@ require 'onedark'.setup {
         CursorLine = {bg = "$none"},
         CursorLineNr = {fg = "$orange", fmt = "bold"},
         User1 = {fg = "$bg0", bg = "$fg", fmt = "bold"},
+        SignatureHint = {fg = "$fg", fmt = "bold"},
     },
     diagnostics = {
         background = false,
     }
 }
+
+require 'lsp_signature'.setup({
+    hint_prefix = "   ",
+    always_trigger = true,
+    hint_scheme = "SignatureHint",
+    select_signature_key = '<A-n>'
+})
 
 require 'nvim-autopairs'.setup()
 

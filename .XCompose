@@ -72,14 +72,17 @@ include "%L"
 <Multi_key> <R> <R>                    : "ℝ"   U211D
 <Multi_key> <C> <C>                    : "ℂ"   U2120
 
-<Multi_key> <b> <c> <a> <p>            : "⋂"   U22C2
-<Multi_key> <b> <c> <u> <p>            : "⋃"   U22C3
+<Multi_key> <C> <a> <p>                : "⋂"   U22C2
+<Multi_key> <C> <u> <p>                : "⋃"   U22C3
 <Multi_key> <c> <a> <p>                : "∩"   U2229
 <Multi_key> <c> <u> <p>                : "∪"   U222A
 <Multi_key> <i> <n>                    : "∈"   U2208
 <Multi_key> <slash> <i> <n>            : "∉"   U2209
 <Multi_key> <s> <u> <b>                : "⊆"   U2286
 <Multi_key> <slash> <s> <u> <b>        : "⊈"   U2288
+
+<Multi_key> <asciitilde> <equal>       : "≅"   U2245
+<Multi_key> <o> <plus>                 : "⊕"   U2295
 
 <Multi_key> <s> <u> <m>                : "∑"   U2211
 <Multi_key> <p> <r> <o> <d>            : "∏"   U220F
@@ -89,3 +92,6 @@ include "%L"
 <Multi_key> <c> <b> <r> <t>            : "∛"   U221B
 <Multi_key> <i> <n> <f>                : "∞"   U221E
 <Multi_key> <asciicircum> <minus>      : "⁻"   U207B # SUPERSCRIPT MINUS
+
+<Multi_key> <underscore> <k>           : "ₖ"   U2096
+<Multi_key> <underscore> <n>           : "ₙ"   U2099
