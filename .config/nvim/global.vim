@@ -124,7 +124,7 @@ require 'onedark'.setup {
     highlights = {
         Folded = {fg = "$grey", fmt = "bold"},
         Error = {fg = "$none"}, --, fmt = "undercurl", sp = "$red"},
-        ["@error"] = {fg = "$none"}, -- fmt = "undercurl", sp = "$red"},
+        ["@error"] = {fg = "$fg"}, -- fmt = "undercurl", sp = "$red"},
         Macro = {fg = "$purple"},
         ["@macro"] = {fg = "$purple"},
         ["@variable.builtin"] = {fmt = "italic"},

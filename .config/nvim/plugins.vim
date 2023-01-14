@@ -26,6 +26,8 @@ Plug 'bfredl/nvim-ipy'
 " Just useful stuff
 Plug 'lervag/vimtex'
 Plug 'kyazdani42/nvim-tree.lua'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'andweeb/presence.nvim'
 Plug 'sbdchd/neoformat'
 Plug 'alvan/vim-closetag'

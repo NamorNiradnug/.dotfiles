@@ -5,6 +5,7 @@ set splitbelow
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set scrolloff=10
 
 set foldtext=getline(v:foldstart).'\ ...\ '.trim(getline(v:foldend))
 set fillchars=fold:\ ,stl:━,stlnc:━,vert:┃
@@ -53,13 +54,15 @@ set statusline=%{%&ft=='NvimTree'?'%=':statuslinestr%}
 set guicursor+=c:ver100-iCursor
 
 function OnStartup()
+    let winid = win_getid()
     split
     if winheight(0) > 15
         :resize 15
     endif
     set winfixheight
     :term
-    NvimTreeToggle
+    " :NvimTreeToggle
+    call win_gotoid(winid)
     autocmd BufWinEnter,WinEnter term://* startinsert
 endfunction
 

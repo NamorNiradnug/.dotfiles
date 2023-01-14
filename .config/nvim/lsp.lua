@@ -192,20 +192,32 @@ vim.diagnostic.config({
     update_in_insert = true
 })
 
-require"clangd_extensions".setup {
-    server = {
-        on_attach = function(_, bufnr)
-            on_attach(_, bufnr)
-            vim.keymap.set('n', '<F2>', function() vim.api.nvim_command("ClangdSwitchSourceHeader") end)
-        end,
-        handlers = handlers,
-        cmd = { 
-            "clangd", "--header-insertion=never", "--completion-style=detailed", "--clang-tidy",
-            "--function-arg-placeholders", "--log=verbose", "--enable-config" }
+--require"clangd_extensions".setup {
+--    server = {
+--        on_attach = function(_, bufnr)
+--            on_attach(_, bufnr)
+--            vim.keymap.set('n', '<F2>', function() vim.api.nvim_command("ClangdSwitchSourceHeader") end)
+--        end,
+--        handlers = handlers,
+--        cmd = {
+--            "clangd", "--header-insertion=never", "--completion-style=detailed", "--clang-tidy",
+--            "--function-arg-placeholders", "--log=verbose", "--enable-config" }
+--    }
+--}
+
+lspconfig.ccls.setup {
+    on_attach = function(client, buf)
+        on_attach(client, buf)
+        vim.keymap.set('n', '<F2>', function()
+            -- TODO Source/Header switch
+        end)
+    end,
+    handlers = handlers,
+    init_options = {
+        cache = { directory = ".ccls-cache" },
+        compilationDatabaseDirectory = "build",
     }
 }
-
--- lspconfig.ccls.setup  { on_attach = on_attach, handlers = handlers, init_options = { cache = { directory = ".ccls-cache" } } }
 lspconfig.pylsp.setup { on_attach = on_attach, handlers = handlers }
 lspconfig.nimls.setup { on_attach = on_attach, handlers = handlers }
 lspconfig.quick_lint_js.setup { on_attach = on_attach, handlers = handlers }

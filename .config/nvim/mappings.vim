@@ -1,7 +1,8 @@
 "Exiting terminal mode with Esc"
 tnoremap <Esc> <C-\><C-n>
 tmap <C-W> <Esc><C-W>
-map <Tab> :NvimTreeFocus<cr>
+map <C-e> :Telescope find_files<cr>
+map <Tab> :NvimTreeToggle<cr>
 map U <C-r>
 map <C-y> "+y
 map <C-p> "+p
