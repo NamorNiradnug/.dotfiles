@@ -28,22 +28,6 @@ function Block(s)
     endif
 endfunction
 
-
-lua << EOF
-function treesitter_statusline()
-    -- return require'nvim-treesitter'.statusline({
-    --     type_patterns = {
-    --         'function', 'method', 'struct', "class",
-    --         "interface", "table", "namespace",
-    --         "if_statement", "for_statement", "for_in_statement", "while_statement", "for_range_loop",
-    --         "if_condition", "variable"
-    --     },
-    --     separator = "  "
-    -- })
-    return require"nvim-navic".get_location()
-end
-EOF
-
 const filename_block = Block('%f%m%r%h%w%q')
 const pos_block = Block('%l:%c')
 
@@ -60,6 +44,7 @@ function OnStartup()
         :resize 15
     endif
     set winfixheight
+    :wincmd J
     :term
     " :NvimTreeToggle
     call win_gotoid(winid)

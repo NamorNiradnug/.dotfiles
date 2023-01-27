@@ -2,7 +2,7 @@
 set termguicolors
 
 set completeopt=menu,menuone,noselect,preview
-set updatetime=500
+set updatetime=300
 set foldmethod=syntax
 
 set mouse=a
@@ -11,14 +11,14 @@ let g:presence_auto_update = 1
 
 let g:neoformat_enabled_nim = ['nimpretty']
 let g:neoformat_enabled_javascript = ['clang-format']
+let g:neoformat_enabled_lua = ['stylua']
+
 let g:vim_markdown_math = 1
 
 function AutoSave()
     if &ma && &mod
         silent! update
-        if !&mod
-            echo "Saved" @%
-        else
+        if &mod
             echo "Cannot save" @%
         endif
     endif

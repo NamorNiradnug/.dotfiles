@@ -32,43 +32,43 @@ local icons = {
     Variable = " ",
 }
 
-local cmp = require 'cmp'
-local luasnip = require 'luasnip'
-local navic = require 'nvim-navic'
+local cmp = require("cmp")
+local luasnip = require("luasnip")
+local navic = require("nvim-navic")
 
 luasnip.config.setup({
-    enable_autosnippets = true
+    enable_autosnippets = true,
 })
 
 require("luasnip.loaders.from_vscode").lazy_load()
 
-navic.setup {
+navic.setup({
     icons = icons,
     highlight = true,
     separator = " > ",
     depth_limit = 0,
     depth_limit_indicator = "..",
-    safe_output = true
-}
+    safe_output = true,
+})
 
 local has_words_before = function()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
 cmp.setup({
     snippet = {
         expand = function(args)
             luasnip.lsp_expand(args.body)
-        end
+        end,
     },
     mapping = cmp.mapping.preset.insert({
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
-        ['<Right>'] = cmp.mapping.confirm({ select = false }),
-        ['<Esc>'] = cmp.mapping.abort(),
-        ['<C-Up>'] = cmp.mapping.scroll_docs(-2),
-        ['<C-Down>'] = cmp.mapping.scroll_docs(2),
-        ['<Tab>'] = cmp.mapping(function(fallback)
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),
+        ["<Right>"] = cmp.mapping.confirm({ select = false }),
+        ["<Esc>"] = cmp.mapping.abort(),
+        ["<C-Up>"] = cmp.mapping.scroll_docs(-2),
+        ["<C-Down>"] = cmp.mapping.scroll_docs(2),
+        ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
             elseif has_words_before() then
@@ -77,18 +77,18 @@ cmp.setup({
                 fallback()
             end
         end, { "i", "s" }),
-        ['<C-Tab>'] = cmp.mapping.complete(),
+        ["<C-Tab>"] = cmp.mapping.complete(),
     }),
     sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-        { name = 'buffer' },
-        { name = 'nvim_lsp_signature_help' }
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+        { name = "buffer" },
+        { name = "nvim_lsp_signature_help" },
     }),
     formatting = {
         format = function(entry, vim_item)
             -- Kind icons
-            vim_item.kind = string.format('%s %s', icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+            vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
             -- Source
             vim_item.menu = ({
                 buffer = "[Buffer]",
@@ -96,10 +96,10 @@ cmp.setup({
                 luasnip = "[LuaSnip]",
                 nvim_lua = "[Lua]",
                 latex_symbols = "[LaTeX]",
-                vsnip = "[vsnip]"
+                vsnip = "[vsnip]",
             })[entry.source.name]
             return vim_item
-        end
+        end,
     },
     window = {
         completion = cmp.config.window.bordered(),
@@ -109,54 +109,39 @@ cmp.setup({
 })
 
 -- insert braces on autocompletion
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({
-    filetypes = {
-        markdown = false
-    }
-}))
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+cmp.event:on(
+    "confirm_done",
+    cmp_autopairs.on_confirm_done({
+        filetypes = {
+            markdown = false,
+        },
+    })
+)
 
 -- general
-local lspconfig = require 'lspconfig'
+local lspconfig = require("lspconfig")
 
-local border = {
-      {"╭", "FloatBorder"},
-      {"─", "FloatBorder"},
-      {"╮", "FloatBorder"},
-      {"│", "FloatBorder"},
-      {"╯", "FloatBorder"},
-      {"─", "FloatBorder"},
-      {"╰", "FloatBorder"},
-      {"│", "FloatBorder"},
-}
-
--- LSP settings (for overriding per client)
---local handlers =  {
---    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
---    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
---    ["textDocument/documentSymbol"] = vim.lsp.with(vim.lsp.handlers.document_symbol, { border = border }),
---}
-
--- To instead override globally
+-- Rounded borders
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     opts = opts or {}
-    opts.border = border
+    opts.border = "rounded"
     return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
 local on_attach = function(client, bufnr)
     local opts = { buffer = bufnr }
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-    vim.keymap.set('n', '<C-d>', vim.lsp.buf.type_definition, opts)
-    vim.keymap.set('n', '<F12>', vim.lsp.buf.rename, opts)
-    vim.keymap.set('n', '<C-l>', vim.lsp.buf.code_action, {})
-    vim.keymap.set('n', '<C-f>', vim.lsp.buf.format, {})
-    vim.keymap.set('i', '<C-f>', vim.lsp.buf.format, {})
+    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+    vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+    vim.keymap.set("n", "<C-d>", vim.lsp.buf.type_definition, opts)
+    vim.keymap.set("n", "<F12>", vim.lsp.buf.rename, opts)
+    vim.keymap.set("n", "<C-l>", vim.lsp.buf.code_action, {})
+    vim.keymap.set("n", "<C-f>", vim.lsp.buf.format, {})
+    vim.keymap.set("i", "<C-f>", vim.lsp.buf.format, {})
     vim.api.nvim_create_user_command("Format", vim.lsp.buf.format, {})
     vim.api.nvim_command("highlight clear TSError")
     vim.api.nvim_create_autocmd("CursorHold", {
@@ -165,17 +150,39 @@ local on_attach = function(client, bufnr)
             local opts = {
                 focusable = false,
                 close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-                border = 'rounded',
-                source = 'always',
-                prefix = ' ',
-                scope = 'cursor',
+                border = "rounded",
+                source = "always",
+                prefix = " ",
+                scope = "cursor",
             }
-        vim.diagnostic.open_float(nil, opts)
-        end
+            vim.diagnostic.open_float(nil, opts)
+        end,
     })
     if client.server_capabilities.documentSymbolProvider then
         navic.attach(client, bufnr)
         vim.cmd("setlocal winbar=%{%v:lua.require'nvim-navic'.get_location()%}")
+    end
+
+    if client.server_capabilities.documentHighlightProvider then
+        vim.api.nvim_create_augroup("lsp_document_highlight", {
+            clear = false,
+        })
+        vim.api.nvim_clear_autocmds({
+            buffer = bufnr,
+            group = "lsp_document_highlight",
+        })
+        --
+        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+            group = "lsp_document_highlight",
+            buffer = bufnr,
+            callback = vim.lsp.buf.document_highlight,
+        })
+        vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+            group = "lsp_document_highlight",
+            buffer = bufnr,
+            callback = vim.lsp.buf.clear_references,
+        })
+        --]]
     end
 end
 
@@ -187,24 +194,33 @@ end
 
 vim.diagnostic.config({
     virtual_text = {
-        prefix = '❮',
+        prefix = "❮",
     },
-    update_in_insert = true
+    update_in_insert = true,
 })
 
---require"clangd_extensions".setup {
---    server = {
---        on_attach = function(_, bufnr)
---            on_attach(_, bufnr)
---            vim.keymap.set('n', '<F2>', function() vim.api.nvim_command("ClangdSwitchSourceHeader") end)
---        end,
---        handlers = handlers,
---        cmd = {
---            "clangd", "--header-insertion=never", "--completion-style=detailed", "--clang-tidy",
---            "--function-arg-placeholders", "--log=verbose", "--enable-config" }
---    }
---}
+require("clangd_extensions").setup({
+    server = {
+        on_attach = function(_, bufnr)
+            on_attach(_, bufnr)
+            vim.keymap.set("n", "<F2>", function()
+                vim.api.nvim_command("ClangdSwitchSourceHeader")
+            end)
+        end,
+        handlers = handlers,
+        cmd = {
+            "clangd",
+            "--header-insertion=never",
+            "--completion-style=detailed",
+            "--clang-tidy",
+            "--function-arg-placeholders",
+            "--log=verbose",
+            "--enable-config",
+        },
+    },
+})
 
+--[[
 lspconfig.ccls.setup {
     on_attach = function(client, buf)
         on_attach(client, buf)
@@ -218,17 +234,25 @@ lspconfig.ccls.setup {
         compilationDatabaseDirectory = "build",
     }
 }
-lspconfig.pylsp.setup { on_attach = on_attach, handlers = handlers }
-lspconfig.nimls.setup { on_attach = on_attach, handlers = handlers }
-lspconfig.quick_lint_js.setup { on_attach = on_attach, handlers = handlers }
-lspconfig.texlab.setup { on_attach = on_attach, handlers = handlers, filetypes = {"tex", "markdown"} }
-lspconfig.arduino_language_server.setup {
+]]
+--
+
+lspconfig.pylsp.setup({ on_attach = on_attach, handlers = handlers })
+lspconfig.nimls.setup({ on_attach = on_attach, handlers = handlers })
+lspconfig.quick_lint_js.setup({ on_attach = on_attach, handlers = handlers })
+lspconfig.texlab.setup({ on_attach = on_attach, handlers = handlers, filetypes = { "tex", "markdown" } })
+lspconfig.arduino_language_server.setup({
     cmd = {
         "arduino-language-server",
-        "-cli-config", "~/.arduino15/arduino-cli.yaml",
-        "-fqbn", "arduino:avr:uno",
-        "-cli", "arduino-cli",
-        "-clangd", "clangd"
+        "-cli-config",
+        "~/.arduino15/arduino-cli.yaml",
+        "-fqbn",
+        "arduino:avr:uno",
+        "-cli",
+        "arduino-cli",
+        "-clangd",
+        "clangd",
     },
-    on_attach = on_attach, handlers = handlers
-}
+    on_attach = on_attach,
+    handlers = handlers,
+})

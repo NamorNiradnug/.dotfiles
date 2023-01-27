@@ -19,8 +19,8 @@ Plug 'nvim-treesitter/playground'
 Plug 'hiphish/jinja.vim'
 Plug 'fladson/vim-kitty'
 Plug 'ron-rs/ron.vim'
-Plug 'godlygeek/tabular'
-Plug 'preservim/vim-markdown'
+" Plug 'godlygeek/tabular'
+" Plug 'preservim/vim-markdown'
 Plug 'bfredl/nvim-ipy'
 
 " Just useful stuff
