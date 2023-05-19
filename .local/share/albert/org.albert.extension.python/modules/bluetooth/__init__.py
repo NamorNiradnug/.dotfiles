@@ -7,7 +7,6 @@ from pathlib import Path
 from typing import List, Mapping, Optional, Sequence
 
 import albert as v0
-from gi.repository import GdkPixbuf, Notify
 
 __title__ = "bluetooth"
 __version__ = "0.4.0"

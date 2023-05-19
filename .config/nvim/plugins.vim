@@ -9,30 +9,30 @@ Plug 'ray-x/lsp_signature.nvim'
 Plug 'p00f/clangd_extensions.nvim'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'rafamadriz/friendly-snippets'
+" Plug 'rafamadriz/friendly-snippets'
 
 " Languages support
 Plug 'q60/vim-brainfuck'
 Plug 'alaviss/nim.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
-Plug 'hiphish/jinja.vim'
+" Plug 'hiphish/jinja.vim'
 Plug 'fladson/vim-kitty'
 Plug 'ron-rs/ron.vim'
 " Plug 'godlygeek/tabular'
 " Plug 'preservim/vim-markdown'
-Plug 'bfredl/nvim-ipy'
+" Plug 'bfredl/nvim-ipy'
+Plug 'kaarmu/typst.vim'
 
 " Just useful stuff
 Plug 'lervag/vimtex'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+" Plug 'nvim-telescope/telescope.nvim'
 Plug 'andweeb/presence.nvim'
 Plug 'sbdchd/neoformat'
 Plug 'alvan/vim-closetag'
 Plug 'windwp/nvim-autopairs'
-Plug 'rhysd/open-pdf.vim'
 Plug 'jbyuki/venn.nvim'
 
 " Look and feel

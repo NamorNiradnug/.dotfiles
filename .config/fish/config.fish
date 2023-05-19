@@ -11,6 +11,7 @@ set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -x MOZ_ENABLE_WAYLAND 1
 
 set -x QT_QPA_PLATFORMTHEME "qt5ct"
+# set -x QT_STYLE_OVERRIDE "kvantum"
 # make OBS use system theme
 set -x QT_THEME_OVERRIDE "qt5ct"
 

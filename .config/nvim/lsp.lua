@@ -201,20 +201,21 @@ vim.diagnostic.config({
 
 require("clangd_extensions").setup({
     server = {
-        on_attach = function(_, bufnr)
-            on_attach(_, bufnr)
+        on_attach = function(client, bufnr)
+            on_attach(client, bufnr)
+            -- client.server_capabilities.semanticTokensProvider = nil,
             vim.keymap.set("n", "<F2>", function()
                 vim.api.nvim_command("ClangdSwitchSourceHeader")
             end)
         end,
         handlers = handlers,
         cmd = {
-            "clangd",
+            "/home/roma57/.installed/llvm-project/build/bin/clangd",
+            -- "/usr/bin/clangd",
             "--header-insertion=never",
             "--completion-style=detailed",
             "--clang-tidy",
             "--function-arg-placeholders",
-            "--log=verbose",
             "--enable-config",
         },
     },
@@ -241,6 +242,7 @@ lspconfig.pylsp.setup({ on_attach = on_attach, handlers = handlers })
 lspconfig.nimls.setup({ on_attach = on_attach, handlers = handlers })
 lspconfig.quick_lint_js.setup({ on_attach = on_attach, handlers = handlers })
 lspconfig.texlab.setup({ on_attach = on_attach, handlers = handlers, filetypes = { "tex", "markdown" } })
+lspconfig.typst_lsp.setup({ on_attach = on_attach, handlers = handlers })
 lspconfig.arduino_language_server.setup({
     cmd = {
         "arduino-language-server",

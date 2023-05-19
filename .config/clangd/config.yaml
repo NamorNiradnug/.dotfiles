@@ -1,16 +1,17 @@
 Diagnostics:
   ClangTidy:
-    Add: [readability-*, llvm-*, modernize-*, google-*, misc-*, bugprone-*, clang-*, performance-*, cppcoreguidelines-*]
+    Add: [readability-*, llvm-*, modernize-*, google-*, misc-*, bugprone-*, clang-*, performance-*]
     Remove: [
       readability-identifier-length,
       modernize-use-trailing-return-type,
-      readability-magic-numbers,
+      modernize-avoid-c-arrays,
+      modernize-pass-by-value,
       readability-uppercase-literal-suffix,
+      readability-function-cognitive-complexity,
       bugprone-easily-swappable-parameters,
-      cppcoreguidelines-pro-type-cstyle-cast,
+      misc-non-private-member-variables-in-classes,
+      modernize-use-nodiscard,
       google-readability-casting]
-    CheckOptions:
-      misc-non-private-member-variables-in-classes.IgnoreClassesWithAllMemberVariablesBeingPublic: true
   UnusedIncludes: Strict
 
 Hover:

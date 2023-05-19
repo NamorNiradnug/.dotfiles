@@ -3,7 +3,8 @@ set termguicolors
 
 set completeopt=menu,menuone,noselect,preview
 set updatetime=300
-set foldmethod=syntax
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 
 set mouse=a
 
@@ -30,8 +31,6 @@ lua << EOF
 require 'nvim-treesitter.configs'.setup {
     highlight = {
         enable = true,
-        additional_vim_regex_highlighting = true,
-        disable = {"latex"}
     },
     indent = {
         enable = true,
@@ -93,28 +92,6 @@ require 'bufferline'.setup {
                 separator = "┃"
             }
         },
-        groups = {
-            items = {
-                {
-                    name = " Headers",
-                    matcher = function(buf)
-                        return buf.filename:match("%.h") or buf.filename:match("%.hpp")
-                    end
-                },
-                {
-                    name = " C++ Source",
-                    matcher = function(buf)
-                        return buf.filename:match("%.cpp")
-                    end
-                },
-                {
-                    name = " C Source",
-                    matcher = function(buf)
-                        return buf.filename:match("%.c")
-                    end
-                }
-            }
-        }
     }
 }
 
@@ -124,14 +101,7 @@ require 'onedark'.setup {
     highlights = {
         Folded = {fg = "$grey", fmt = "bold"},
         Error = {fg = "$none"}, --, fmt = "undercurl", sp = "$red"},
-        ["@error"] = {fg = "$fg"}, -- fmt = "undercurl", sp = "$red"},
         Macro = {fg = "$purple"},
-        ["@macro"] = {fg = "$purple"},
-        ["@variable.builtin"] = {fmt = "italic"},
-        ["@type.builtin"] = {fg = "$yellow"},
-        ["@type.qualifier"] = {fg = "$purple"},
-        ["@type.definition"] = {fg = "$yellow"},
-        ["@storageclass"] = {fg = "$purple"},
         VertSplit = {fg = "$fg"},
         MatchParen = {bg = "$bg2", fmt = "bold"},
         NvimTreeVertSplit = {fg = "$fg"},
@@ -142,7 +112,6 @@ require 'onedark'.setup {
         FloatBorder = {fg = "$blue", bg = "$none"},
         NormalFloat = {fg = "$fg", bg = "$none"},
         LspSignatureActiveParameter = {bg = "$grey", fmt = "underline"},
-        ["@variable"] = {fg = "$red"},
         Special = {fg = "$red", fmt = "bold"},
         SpecialChar = {fg = "$red", fmt = "bold"},
         StatusLine = {fg = "$fg", bg = "$none"},
@@ -151,6 +120,20 @@ require 'onedark'.setup {
         CursorLineNr = {fg = "$orange", fmt = "bold"},
         User1 = {fg = "$bg0", bg = "$fg", fmt = "bold"},
         SignatureHint = {fg = "$fg", fmt = "bold"},
+        cInclude = {fg = "$purple"},
+        StorageClass = {fg = "$purple"},
+
+        ["@variable"] = {fg = "$red"},
+        ["@error"] = {fg = "$fg"}, -- fmt = "undercurl", sp = "$red"},
+        ["@macro"] = {fg = "$purple"},
+        ["@variable.builtin"] = {fmt = "italic"},
+        ["@type.builtin"] = {fg = "$yellow"},
+        ["@type.qualifier"] = {fg = "$purple"},
+        ["@type.definition"] = {fg = "$yellow"},
+        ["@storageclass"] = {fg = "$purple"},
+        ["@lsp.type.property.cpp"] = {fg = "$cyan"},
+        ["@lsp.type.variable"] = {fg = "$red"},
+        ["@lsp.type.concept.cpp"] = {fg = "$yellow"}
     },
     diagnostics = {
         background = false,

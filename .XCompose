@@ -95,3 +95,6 @@ include "%L"
 
 <Multi_key> <underscore> <k>           : "ₖ"   U2096
 <Multi_key> <underscore> <n>           : "ₙ"   U2099
+<Multi_key> <underscore> <i>           : "ᵢ"   U1D62
+
+<Multi_key> <0> <0>                    : "∘"   U2218
