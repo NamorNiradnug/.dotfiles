@@ -83,6 +83,7 @@ include "%L"
 
 <Multi_key> <asciitilde> <equal>       : "≅"   U2245
 <Multi_key> <o> <plus>                 : "⊕"   U2295
+<Multi_key> <o> <x>                    : "⊗"   U2297
 
 <Multi_key> <s> <u> <m>                : "∑"   U2211
 <Multi_key> <p> <r> <o> <d>            : "∏"   U220F
@@ -98,3 +99,5 @@ include "%L"
 <Multi_key> <underscore> <i>           : "ᵢ"   U1D62
 
 <Multi_key> <0> <0>                    : "∘"   U2218
+
+<Multi_key> <minus> <minus> <greater>  : "⟶"   U27F6
