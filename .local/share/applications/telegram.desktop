@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Telegram Web
 Comment=Official web version of Telegram messaging app
-Exec=xdg-open https://web.telegram.org/z
+Exec=xdg-open https://web.telegram.org/a
 Icon=telegram
 Type=Application
 Categories=Chat;Network;InstantMessaging;Qt;

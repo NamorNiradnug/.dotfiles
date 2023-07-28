@@ -216,7 +216,7 @@ require("clangd_extensions").setup({
             "--completion-style=detailed",
             "--clang-tidy",
             "--function-arg-placeholders",
-            "--enable-config",
+            "--enable-config"
         },
     },
 })
@@ -235,8 +235,7 @@ lspconfig.ccls.setup {
         compilationDatabaseDirectory = "build",
     }
 }
-]]
---
+]]--
 
 lspconfig.pylsp.setup({ on_attach = on_attach, handlers = handlers })
 lspconfig.nimls.setup({ on_attach = on_attach, handlers = handlers })
@@ -253,7 +252,7 @@ lspconfig.arduino_language_server.setup({
         "-cli",
         "arduino-cli",
         "-clangd",
-        "clangd",
+        "/home/roma57/.installed/llvm-project/build/bin/clangd",
     },
     on_attach = on_attach,
     handlers = handlers,

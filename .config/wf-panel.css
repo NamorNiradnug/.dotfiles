@@ -31,3 +31,6 @@ popover,window,entry {
     box-shadow: none;
 }
 
+separator {
+    background: rgba(255, 255, 255, 0.3);
+}

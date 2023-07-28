@@ -19,4 +19,5 @@ Hover:
 
 CompileFlags:
   Add: -Wno-unknown-warning-option
+  Remove: [-m*, -f*]
   #  Add: [-std=c++20]

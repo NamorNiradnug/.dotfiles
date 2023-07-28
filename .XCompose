@@ -62,6 +62,8 @@ include "%L"
 # pressing double-u is actually faster but xu also should work
 <Multi_key> <x> <u>                    : "ŭ"   U016D
 <Multi_key> <x> <U>                    : "Ŭ"   U016C
+<Multi_key> <x> <h>                    : "ĥ"
+<Multi_key> <x> <H>                    : "Ĥ"
 
 # math symbols
 <Multi_key> <E> <E>                    : "∃"   U2203
@@ -97,6 +99,8 @@ include "%L"
 <Multi_key> <underscore> <k>           : "ₖ"   U2096
 <Multi_key> <underscore> <n>           : "ₙ"   U2099
 <Multi_key> <underscore> <i>           : "ᵢ"   U1D62
+
+<Multi_key> <asciicircum> <t>          : "ᵗ"   U1D57
 
 <Multi_key> <0> <0>                    : "∘"   U2218
 
