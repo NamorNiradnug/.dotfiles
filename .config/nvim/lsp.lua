@@ -171,7 +171,6 @@ local on_attach = function(client, bufnr)
             buffer = bufnr,
             group = "lsp_document_highlight",
         })
-        --
         vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
             group = "lsp_document_highlight",
             buffer = bufnr,
@@ -182,7 +181,6 @@ local on_attach = function(client, bufnr)
             buffer = bufnr,
             callback = vim.lsp.buf.clear_references,
         })
-        --]]
     end
 end
 
@@ -199,27 +197,7 @@ vim.diagnostic.config({
     update_in_insert = true,
 })
 
-require("clangd_extensions").setup({
-    server = {
-        on_attach = function(client, bufnr)
-            on_attach(client, bufnr)
-            -- client.server_capabilities.semanticTokensProvider = nil,
-            vim.keymap.set("n", "<F2>", function()
-                vim.api.nvim_command("ClangdSwitchSourceHeader")
-            end)
-        end,
-        handlers = handlers,
-        cmd = {
-            "/home/roma57/.installed/llvm-project/build/bin/clangd",
-            -- "/usr/bin/clangd",
-            "--header-insertion=never",
-            "--completion-style=detailed",
-            "--clang-tidy",
-            "--function-arg-placeholders",
-            "--enable-config"
-        },
-    },
-})
+require("clangd_extensions").setup({})
 
 --[[
 lspconfig.ccls.setup {
@@ -235,8 +213,29 @@ lspconfig.ccls.setup {
         compilationDatabaseDirectory = "build",
     }
 }
-]]--
+]]
+--
 
+lspconfig.clangd.setup({
+    on_attach = function(client, bufnr)
+        on_attach(client, bufnr)
+        require("clangd_extensions.inlay_hints").setup_autocmd()
+        require("clangd_extensions.inlay_hints").set_inlay_hints()
+        vim.keymap.set("n", "<F2>", function()
+            vim.api.nvim_command("ClangdSwitchSourceHeader")
+        end)
+    end,
+    handlers = handlers,
+    cmd = {
+        -- "/home/roma57/.installed/llvm-project/build/bin/clangd",
+        "/usr/bin/clangd",
+        "--header-insertion=never",
+        "--completion-style=detailed",
+        "--clang-tidy",
+        "--function-arg-placeholders",
+        "--enable-config",
+    },
+})
 lspconfig.pylsp.setup({ on_attach = on_attach, handlers = handlers })
 lspconfig.nimls.setup({ on_attach = on_attach, handlers = handlers })
 lspconfig.quick_lint_js.setup({ on_attach = on_attach, handlers = handlers })

@@ -31,6 +31,7 @@ lua << EOF
 require 'nvim-treesitter.configs'.setup {
     highlight = {
         enable = true,
+        additional_vim_regex_highlighting = { "typst" }
     },
     indent = {
         enable = true,
@@ -131,6 +132,7 @@ require 'onedark'.setup {
         ["@type.qualifier"] = {fg = "$purple"},
         ["@type.definition"] = {fg = "$yellow"},
         ["@storageclass"] = {fg = "$purple"},
+        ["@punctuation.special.typst"] = {fg = "$orange"},
         ["@lsp.type.property.cpp"] = {fg = "$cyan"},
         ["@lsp.type.variable"] = {fg = "$red"},
         ["@lsp.type.concept.cpp"] = {fg = "$yellow"}
