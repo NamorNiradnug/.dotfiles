@@ -89,6 +89,7 @@ include "%L"
 
 <Multi_key> <s> <u> <m>                : "∑"   U2211
 <Multi_key> <p> <r> <o> <d>            : "∏"   U220F
+<Multi_key> <i> <n> <t>                : "∫"   U222B
 <Multi_key> <i> <f> <f>                : "⟺"   U27FA
 
 <Multi_key> <s> <q> <r> <t>            : "√"   U221A
@@ -105,3 +106,5 @@ include "%L"
 <Multi_key> <0> <0>                    : "∘"   U2218
 
 <Multi_key> <minus> <minus> <greater>  : "⟶"   U27F6
+
+<Multi_key> <s> <h> <r> <u> <g>        : "¯\\_(ツ)_/¯"

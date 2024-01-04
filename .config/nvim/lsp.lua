@@ -197,6 +197,20 @@ vim.diagnostic.config({
     update_in_insert = true,
 })
 
+require("rust-tools").setup({
+    server = {
+        on_attach = on_attach,
+        handlers = handlers,
+        settings = {
+            ["rust-analyzer"] = {
+                checkOnSave = {
+                    command = "clippy",
+                },
+            },
+        },
+    },
+})
+
 require("clangd_extensions").setup({})
 
 --[[
@@ -256,3 +270,4 @@ lspconfig.arduino_language_server.setup({
     on_attach = on_attach,
     handlers = handlers,
 })
+lspconfig.asm_lsp.setup({ on_attach = on_attach, handlers = handlers })

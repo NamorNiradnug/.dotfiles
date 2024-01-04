@@ -15,6 +15,9 @@ set -x QT_QPA_PLATFORMTHEME "qt5ct"
 # set -x QT_STYLE_OVERRIDE "kvantum"
 # make OBS use system theme
 set -x QT_THEME_OVERRIDE "qt5ct"
+set -x QT_WAYLAND_DISABLE_WINDOWDECORATION 1
+
+set -x DEBUGINFOD_URLS "https://debuginfod.archlinux.org"
 
 # Set settings for https://github.com/franciscolourenco/done
 set -U __done_min_cmd_duration 10000
@@ -37,6 +40,7 @@ end
 __add_to_path ~/.local/bin
 __add_to_path ~/.nimble/bin
 __add_to_path ~/go/bin
+__add_to_path ~/.cargo/bin
 
 ## Starship prompt
 if status --is-interactive

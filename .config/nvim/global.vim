@@ -103,7 +103,7 @@ require 'onedark'.setup {
         Folded = {fg = "$grey", fmt = "bold"},
         Error = {fg = "$none"}, --, fmt = "undercurl", sp = "$red"},
         Macro = {fg = "$purple"},
-        VertSplit = {fg = "$fg"},
+        WinSeparator = {fg = "$fg"},
         MatchParen = {bg = "$bg2", fmt = "bold"},
         NvimTreeVertSplit = {fg = "$fg"},
         DiagnosticVirtualTextError = {fg = "$red"},
@@ -173,10 +173,10 @@ require('presence'):setup({
 })
 EOF
 
+autocmd BufRead,BufNewFile *.S set filetype=gas
 autocmd BufRead,BufNewFile *.html call jinja#AdjustFiletype()
 
 autocmd FileType markdown set wrap linebreak
 
 autocmd FileType css :ColorizerToggle
 autocmd FileType css :highlight clear TSError
-

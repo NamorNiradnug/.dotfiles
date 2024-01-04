@@ -6,6 +6,7 @@ map <Tab> :NvimTreeToggle<cr>
 map U <C-r>
 map <C-y> "+y
 map <C-p> "+p
+map <C-S-O> <c-i>
 
 " Move to previous/next
 map <silent>    <A-Left>  :BufferLineCyclePrev<CR>
