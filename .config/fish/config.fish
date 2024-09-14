@@ -18,6 +18,8 @@ set -x QT_THEME_OVERRIDE "qt5ct"
 set -x QT_WAYLAND_DISABLE_WINDOWDECORATION 1
 
 set -x DEBUGINFOD_URLS "https://debuginfod.archlinux.org"
+set -x GPG_TTY $(tty)
+
 
 # Set settings for https://github.com/franciscolourenco/done
 set -U __done_min_cmd_duration 10000
@@ -41,6 +43,7 @@ __add_to_path ~/.local/bin
 __add_to_path ~/.nimble/bin
 __add_to_path ~/go/bin
 __add_to_path ~/.cargo/bin
+__add_to_path ~/.ghcup/bin
 
 ## Starship prompt
 if status --is-interactive
@@ -146,10 +149,14 @@ alias jctl="journalctl -p 3 -xb"
 # .dotfiles repo
 alias dotfiles='git --git-dir=$HOME/.dotfiles/.git/ --work-tree=$HOME'
 
+function disass --argument filepath -d "Objdump with less" -w objdump
+    objdump -DC --disassembler-color=on $argv | less -r
+end
+
 if status --is-login && test (tty) = /dev/tty1
-    wayfire
+    wayfire > .logs/wayfire
 else if status --is-interactive
-    if ! set -q VIMRUNTIME
+    if ! set -q NVIM
         fastfetch
     end
 end

@@ -46,4 +46,3 @@ Plug 'andweeb/presence.nvim'
 Plug 'SmiteshP/nvim-navic'
 
 call plug#end()
-

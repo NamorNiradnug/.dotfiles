@@ -10,6 +10,7 @@ Diagnostics:
       readability-function-cognitive-complexity,
       bugprone-easily-swappable-parameters,
       misc-non-private-member-variables-in-classes,
+      misc-definitions-in-headers,
       modernize-use-nodiscard,
       google-readability-casting]
   UnusedIncludes: Strict

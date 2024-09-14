@@ -250,10 +250,18 @@ lspconfig.clangd.setup({
         "--enable-config",
     },
 })
-lspconfig.pylsp.setup({ on_attach = on_attach, handlers = handlers })
+lspconfig.pylsp.setup({
+    on_attach = on_attach,
+    handlers = handlers,
+    python = {
+        analysis = {
+            ignore = { "*" },
+        },
+    },
+})
+lspconfig.ruff_lsp.setup({ on_attach = on_attach, handlers = handlers })
 lspconfig.nimls.setup({ on_attach = on_attach, handlers = handlers })
 lspconfig.quick_lint_js.setup({ on_attach = on_attach, handlers = handlers })
-lspconfig.texlab.setup({ on_attach = on_attach, handlers = handlers, filetypes = { "tex", "markdown" } })
 lspconfig.typst_lsp.setup({ on_attach = on_attach, handlers = handlers })
 lspconfig.arduino_language_server.setup({
     cmd = {
@@ -271,3 +279,5 @@ lspconfig.arduino_language_server.setup({
     handlers = handlers,
 })
 lspconfig.asm_lsp.setup({ on_attach = on_attach, handlers = handlers })
+lspconfig.julials.setup({ on_attach = on_attach, handlers = handlers })
+lspconfig.hls.setup({ on_attach = on_attach, handlers = handlers })

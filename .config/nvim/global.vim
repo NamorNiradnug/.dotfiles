@@ -79,7 +79,6 @@ require 'bufferline'.setup {
         },
         separator_style = {'┃', '┃'},
         diagnostics = "nvim_lsp",
-        diagnostics_update_in_insert = true,
         diagnostics_indicator = function(count, level)
             local icon = level:match("error") and " " or " "
             return " " .. icon .. count
@@ -106,6 +105,10 @@ require 'onedark'.setup {
         WinSeparator = {fg = "$fg"},
         MatchParen = {bg = "$bg2", fmt = "bold"},
         NvimTreeVertSplit = {fg = "$fg"},
+        NvimTreeGitModifiedIcon = {fg = "$yellow"},
+        NvimTreeGitNewIcon = {fg = "$green"},
+        NvimTreeGitDirtyIcon = {fg = "$yellow"},
+        NvimTreeGitMergeIcon = {fg = "$yellow"},
         DiagnosticVirtualTextError = {fg = "$red"},
         DiagnosticVirtualTextHint = {fg = "$purple"},
         DiagnosticVirtualTextInfo = {fg = "$cyan"},
@@ -123,6 +126,8 @@ require 'onedark'.setup {
         SignatureHint = {fg = "$fg", fmt = "bold"},
         cInclude = {fg = "$purple"},
         StorageClass = {fg = "$purple"},
+        WinBar = {bg = "$none"},
+        WinBarNC = {bg = "$none"},
 
         ["@variable"] = {fg = "$red"},
         ["@error"] = {fg = "$fg"}, -- fmt = "undercurl", sp = "$red"},
@@ -135,7 +140,15 @@ require 'onedark'.setup {
         ["@punctuation.special.typst"] = {fg = "$orange"},
         ["@lsp.type.property.cpp"] = {fg = "$cyan"},
         ["@lsp.type.variable"] = {fg = "$red"},
-        ["@lsp.type.concept.cpp"] = {fg = "$yellow"}
+        ["@lsp.type.concept.cpp"] = {fg = "$yellow"},
+        ["@lsp.mod.readonly"] = {fg = "$orange"},
+        ["@lsp.typemod.variable.readonly"] = {fg = "$red"},
+        ["@lsp.mod.constant"] = {fg = "$orange"},
+        ["@lsp.typemod.variable.constant"] = {fg = "$orange"},
+        ["@lsp.typemod.variable.defaultLibrary"] = {fg = "$none"},
+        ["@lsp.typemod.keyword"] = {fg = "$purple"},
+        ["@lsp.typemod.parameter"] = {fg = "$red"},
+        ["@lsp.typemod.method.readonly.cpp"] = {fg = "$blue"},
     },
     diagnostics = {
         background = false,
