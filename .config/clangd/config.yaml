@@ -1,6 +1,6 @@
 Diagnostics:
   ClangTidy:
-    Add: [readability-*, llvm-*, modernize-*, google-*, misc-*, bugprone-*, clang-*, performance-*]
+    Add: [llvm-*, modernize-*, google-*, misc-*, bugprone-*, clang-*, performance-*]
     Remove: [
       readability-identifier-length,
       modernize-use-trailing-return-type,
@@ -11,8 +11,11 @@ Diagnostics:
       bugprone-easily-swappable-parameters,
       misc-non-private-member-variables-in-classes,
       misc-definitions-in-headers,
+      misc-no-recursion,
       modernize-use-nodiscard,
-      google-readability-casting]
+      google-explicit-constructor,
+      readability-suspicious-call-arguments,
+      readability-magic-numbers]
   UnusedIncludes: Strict
 
 Hover:

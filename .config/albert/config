@@ -5,7 +5,7 @@ hotkey=Ctrl+Space
 memoryDecay=0.75
 notifiedUnsupportedHotkey=true
 separators="[\\s\\\\\\/\\-\\[\\](){}#!?<>\"'=+*.:,;_]+"
-showTray=false
+showTray=true
 telemetry=false
 terminal=Kitty
 
@@ -70,6 +70,7 @@ use_derived=true
 [files]
 enabled=true
 fuzzy=true
+global_handler_enabled=true
 home\roma57\followSymlinks=false
 home\roma57\indexhidden=false
 home\roma57\maxDepth=255
@@ -119,6 +120,9 @@ use_derived=false
 
 [python.pacman]
 enabled=false
+
+[python.tex_to_unicode]
+enabled=true
 
 [python.translators]
 enabled=true
