@@ -269,7 +269,7 @@ lspconfig.pylsp.setup({
         },
     },
 })
-lspconfig.ruff_lsp.setup({ on_attach = on_attach, handlers = handlers })
+lspconfig.ruff.setup({ on_attach = on_attach, handlers = handlers })
 lspconfig.nimls.setup({ on_attach = on_attach, handlers = handlers })
 lspconfig.quick_lint_js.setup({ on_attach = on_attach, handlers = handlers })
 lspconfig.typst_lsp.setup({ on_attach = on_attach, handlers = handlers })

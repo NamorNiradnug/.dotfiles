@@ -1,6 +1,7 @@
 image=/usr/share/wallpapers/garuda-wallpapers/Dragon_wp.png
 layout-bg-color=00000000
 clock
+datestr=%a, %e %b %Y
 indicator
 ring-color=bb00cc
 key-hl-color=880033

@@ -15,7 +15,9 @@ Diagnostics:
       modernize-use-nodiscard,
       google-explicit-constructor,
       readability-suspicious-call-arguments,
-      readability-magic-numbers]
+      readability-magic-numbers,
+      google-default-arguments,
+    ]
   UnusedIncludes: Strict
 
 Hover:

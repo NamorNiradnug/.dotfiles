@@ -103,6 +103,8 @@ include "%L"
 <Multi_key> <underscore> <j>           : "ⱼ"   U2C7C
 <Multi_key> <underscore> <m>           : "ₘ"   U2098
 
+<Multi_key> <asciicircum> <n>          : "ⁿ"   U207F
+<Multi_key> <asciicircum> <m>          : "ᵐ"   U1D50
 <Multi_key> <asciicircum> <t>          : "ᵗ"   U1D57
 
 <Multi_key> <0> <0>                    : "∘"   U2218
