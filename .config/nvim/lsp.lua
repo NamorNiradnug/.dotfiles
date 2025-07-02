@@ -9,27 +9,27 @@ local icons = {
     EnumMember = " ",
     Event = " ",
     Interface = " ",
-    Field = " ",
+    Field = " ",
     File = " ",
     Folder = " ",
     Function = " ",
-    Key = " ",
-    Keyword = " ",
+    Key = " ",
+    Keyword = "󰌆 ",
     Method = "ƒ ",
-    Module = " ",
-    Namespace = " ",
+    Module = "󰏗 ",
+    Namespace = " ",
     Null = "∅ ",
-    Operator = " ",
-    Property = "ﰠ ",
+    Operator = " ",
+    Property = "󰓹 ",
     Reference = " ",
-    Snippet = "﬌ ",
-    String = " ",
+    Snippet = "󰘌 ",
+    String = "󰀬 ",
     Struct = " ",
     Text = " ",
     TypeParameter = " ",
     Unit = " ",
-    Value = " ",
-    Variable = " ",
+    Value = "󰎠 ",
+    Variable = "󰆨 ",
 }
 
 local cmp = require("cmp")
@@ -183,7 +183,7 @@ local on_attach = function(client, bufnr)
         })
     end
 
-    for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) do
+    for _, method in ipairs({ "textDocument/diagnostic", "workspace/diagnostic" }) do
         local default_diagnostic_handler = vim.lsp.handlers[method]
         vim.lsp.handlers[method] = function(err, result, context, config)
             if err ~= nil and err.code == -32802 then
@@ -194,15 +194,17 @@ local on_attach = function(client, bufnr)
     end
 end
 
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
-
 vim.diagnostic.config({
     virtual_text = {
         prefix = "❮",
+    },
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = "󰅚 ",
+            [vim.diagnostic.severity.WARN] = "󰀪 ",
+            [vim.diagnostic.severity.HINT] = "󰌶 ",
+            [vim.diagnostic.severity.INFO] = " ",
+        },
     },
     update_in_insert = true,
 })
@@ -220,8 +222,6 @@ require("rust-tools").setup({
         },
     },
 })
-
-require("clangd_extensions").setup({})
 
 --[[
 lspconfig.ccls.setup {
@@ -243,8 +243,6 @@ lspconfig.ccls.setup {
 lspconfig.clangd.setup({
     on_attach = function(client, bufnr)
         on_attach(client, bufnr)
-        require("clangd_extensions.inlay_hints").setup_autocmd()
-        require("clangd_extensions.inlay_hints").set_inlay_hints()
         vim.keymap.set("n", "<F2>", function()
             vim.api.nvim_command("ClangdSwitchSourceHeader")
         end)
@@ -260,6 +258,7 @@ lspconfig.clangd.setup({
         "--enable-config",
     },
 })
+
 lspconfig.pylsp.setup({
     on_attach = on_attach,
     handlers = handlers,
@@ -272,7 +271,6 @@ lspconfig.pylsp.setup({
 lspconfig.ruff.setup({ on_attach = on_attach, handlers = handlers })
 lspconfig.nimls.setup({ on_attach = on_attach, handlers = handlers })
 lspconfig.quick_lint_js.setup({ on_attach = on_attach, handlers = handlers })
-lspconfig.typst_lsp.setup({ on_attach = on_attach, handlers = handlers })
 lspconfig.arduino_language_server.setup({
     cmd = {
         "arduino-language-server",
