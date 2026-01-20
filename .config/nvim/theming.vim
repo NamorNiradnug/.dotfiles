@@ -15,6 +15,8 @@ set listchars=trail:•,tab:»\ ,leadmultispace:┊\ \ \ ,extends:…,precedes:�
 set nowrap
 set whichwrap+=<,>,h,l
 
+set winborder=rounded
+
 augroup CursorLine
     au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
     au WinLeave * setlocal nocursorline

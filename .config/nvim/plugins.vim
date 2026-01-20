@@ -15,7 +15,6 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'q60/vim-brainfuck'
 Plug 'alaviss/nim.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/playground'
 " Plug 'hiphish/jinja.vim'
 Plug 'fladson/vim-kitty'
 Plug 'ron-rs/ron.vim'
@@ -28,10 +27,8 @@ Plug 'Shirk/vim-gas'
 
 " Just useful stuff
 Plug 'lervag/vimtex'
-Plug 'kyazdani42/nvim-tree.lua'
 Plug 'nvim-lua/plenary.nvim'
-" Plug 'nvim-telescope/telescope.nvim'
-Plug 'andweeb/presence.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'sbdchd/neoformat'
 Plug 'alvan/vim-closetag'
 Plug 'windwp/nvim-autopairs'
@@ -41,8 +38,6 @@ Plug 'jbyuki/venn.nvim'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'navarasu/onedark.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'akinsho/bufferline.nvim'
-Plug 'andweeb/presence.nvim'
 Plug 'SmiteshP/nvim-navic'
 
 call plug#end()

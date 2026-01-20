@@ -8,8 +8,6 @@ set foldexpr=nvim_treesitter#foldexpr()
 
 set mouse=a
 
-let g:presence_auto_update = 1
-
 let g:neoformat_enabled_nim = ['nimpretty']
 let g:neoformat_enabled_javascript = ['clang-format']
 let g:neoformat_enabled_lua = ['stylua']
@@ -28,72 +26,7 @@ endfunction
 au InsertLeave,TextChanged * nested call AutoSave()
 
 lua << EOF
-require 'nvim-treesitter.configs'.setup {
-    highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = { "typst" }
-    },
-    indent = {
-        enable = true,
-        disable = {"cpp", "c"}
-    }
-}
-
 require 'colorizer'.setup({''}, { css = true })
-
-require 'nvim-tree'.setup {
-    hijack_cursor = true,
-    renderer = {
-        indent_markers = {
-            enable = true,
-            icons = {
-                corner = "╰",
-                item = "├",
-                edge = "│",
-                none = " ",
-            }
-        }
-    },
-    diagnostics = {
-        enable = true,
-        show_on_dirs = true,
-        icons = {
-            hint = " ",
-            info = " ",
-            warning = " ",
-            error = " ",
-        },
-    },
-    git = {
-        enable = true,
-    }
-}
-
-require 'bufferline'.setup {
-    options = {
-        tab_size = 10,
-        numbers = "ordinal",
-        indicator = {
-            icon = " ",
-            style = "none"
-        },
-        separator_style = {'┃', '┃'},
-        diagnostics = "nvim_lsp",
-        diagnostics_indicator = function(count, level)
-            local icon = level:match("error") and " " or " "
-            return " " .. icon .. count
-        end,
-        offsets = {
-            {
-                filetype = "NvimTree",
-                text = "File Explorer",
-                highlight = "Directory",
-                text_align = "left",
-                separator = "┃"
-            }
-        },
-    }
-}
 
 require 'onedark'.setup {
     style = "deep",
@@ -152,6 +85,7 @@ require 'onedark'.setup {
         ["@lsp.typemod.keyword"] = {fg = "$purple"},
         ["@lsp.typemod.parameter"] = {fg = "$red"},
         ["@lsp.typemod.method.readonly.cpp"] = {fg = "$blue"},
+        ["@lsp.typemod.property.readonly"] = {fg = "$cyan"},
     },
     diagnostics = {
         background = false,
@@ -167,25 +101,9 @@ require 'lsp_signature'.setup({
 
 require 'nvim-autopairs'.setup()
 
-require('presence'):setup({
-    auto_update         = true,
-    neovim_image_text   = "The One True Text Editor",
-    main_image          = "neovim",
-    client_id           = "793271441293967371",
-    log_level           = nil,
-    debounce_timeout    = 10,
-    enable_line_number  = false,
-    blacklist           = {},
-    buttons             = true,
-    file_assets         = {},
-
-    editing_text        = "Editing %s",
-    file_explorer_text  = "Browsing %s",
-    git_commit_text     = "Committing changes",
-    plugin_manager_text = "Managing plugins",
-    reading_text        = "Reading %s",
-    workspace_text      = "Working on %s",
-    line_number_text    = "Line %s out of %s",
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = { 'cpp', 'c', 'rs', 'py', 'hs', 'html', 'js', 'markdown', 'lua', 'vim', 'sh', 'bash', 'fish', 'meson', 'json', 'make', 'cmake', 'ninja' },
+    callback = function() vim.treesitter.start() end,
 })
 EOF
 

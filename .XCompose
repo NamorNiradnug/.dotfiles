@@ -95,7 +95,6 @@ include "%L"
 <Multi_key> <s> <q> <r> <t>            : "√"   U221A
 <Multi_key> <c> <b> <r> <t>            : "∛"   U221B
 <Multi_key> <i> <n> <f>                : "∞"   U221E
-<Multi_key> <asciicircum> <minus>      : "⁻"   U207B # SUPERSCRIPT MINUS
 
 <Multi_key> <underscore> <k>           : "ₖ"   U2096
 <Multi_key> <underscore> <n>           : "ₙ"   U2099
@@ -106,6 +105,8 @@ include "%L"
 <Multi_key> <asciicircum> <n>          : "ⁿ"   U207F
 <Multi_key> <asciicircum> <m>          : "ᵐ"   U1D50
 <Multi_key> <asciicircum> <t>          : "ᵗ"   U1D57
+<Multi_key> <asciicircum> <k>          : "ᵏ"   U1D57
+<Multi_key> <asciicircum> <minus>      : "⁻"   U207B # SUPERSCRIPT MINUS
 
 <Multi_key> <0> <0>                    : "∘"   U2218
 

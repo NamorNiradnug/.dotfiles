@@ -12,18 +12,31 @@ Diagnostics:
       misc-non-private-member-variables-in-classes,
       misc-definitions-in-headers,
       misc-no-recursion,
+      misc-use-internal-linkage,
       modernize-use-nodiscard,
       google-explicit-constructor,
       readability-suspicious-call-arguments,
       readability-magic-numbers,
       google-default-arguments,
+      bugprone-narrowing-conversions,
+      performance-enum-size,
+      llvm-prefer-static-over-anonymous-namespace,
     ]
+    FastCheckFilter: None
   UnusedIncludes: Strict
 
 Hover:
-  ShowAKA: Yes
+  ShowAKA: true
+
+InlayHints:
+  DefaultArguments: true
+
+Completion:
+  AllScopes: true
+  ArgumentLists: Delimeters
+  HeaderInsertion: Never
+  CodePatterns: All
 
 CompileFlags:
   Add: -Wno-unknown-warning-option
   Remove: [-m*, -f*]
-  #  Add: [-std=c++20]

@@ -119,17 +119,6 @@ cmp.event:on(
     })
 )
 
--- general
-local lspconfig = require("lspconfig")
-
--- Rounded borders
-local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
-function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-    opts = opts or {}
-    opts.border = "rounded"
-    return orig_util_open_floating_preview(contents, syntax, opts, ...)
-end
-
 local on_attach = function(client, bufnr)
     local opts = { buffer = bufnr }
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
@@ -137,7 +126,6 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
     vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-    vim.keymap.set("n", "<C-d>", vim.lsp.buf.type_definition, opts)
     vim.keymap.set("n", "<F12>", vim.lsp.buf.rename, opts)
     vim.keymap.set("n", "<C-l>", vim.lsp.buf.code_action, {})
     vim.keymap.set("n", "<C-f>", vim.lsp.buf.format, {})
@@ -192,6 +180,8 @@ local on_attach = function(client, bufnr)
             return default_diagnostic_handler(err, result, context, config)
         end
     end
+
+    vim.lsp.inlay_hint.enable()
 end
 
 vim.diagnostic.config({
@@ -207,20 +197,6 @@ vim.diagnostic.config({
         },
     },
     update_in_insert = true,
-})
-
-require("rust-tools").setup({
-    server = {
-        on_attach = on_attach,
-        handlers = handlers,
-        settings = {
-            ["rust-analyzer"] = {
-                checkOnSave = {
-                    command = "clippy",
-                },
-            },
-        },
-    },
 })
 
 --[[
@@ -240,7 +216,7 @@ lspconfig.ccls.setup {
 ]]
 --
 
-lspconfig.clangd.setup({
+vim.lsp.config('clangd', {
     on_attach = function(client, bufnr)
         on_attach(client, bufnr)
         vim.keymap.set("n", "<F2>", function()
@@ -248,18 +224,10 @@ lspconfig.clangd.setup({
         end)
     end,
     handlers = handlers,
-    cmd = {
-        -- "/home/roma57/.installed/llvm-project/build/bin/clangd",
-        "/usr/bin/clangd",
-        "--header-insertion=never",
-        "--completion-style=detailed",
-        "--clang-tidy",
-        "--function-arg-placeholders",
-        "--enable-config",
-    },
 })
+vim.lsp.enable('clangd')
 
-lspconfig.pylsp.setup({
+vim.lsp.config('pylsp', {
     on_attach = on_attach,
     handlers = handlers,
     python = {
@@ -268,10 +236,12 @@ lspconfig.pylsp.setup({
         },
     },
 })
-lspconfig.ruff.setup({ on_attach = on_attach, handlers = handlers })
-lspconfig.nimls.setup({ on_attach = on_attach, handlers = handlers })
-lspconfig.quick_lint_js.setup({ on_attach = on_attach, handlers = handlers })
-lspconfig.arduino_language_server.setup({
+vim.lsp.enable('pylsp')
+
+vim.lsp.config('ruff', { on_attach = on_attach, handlers = handlers })
+vim.lsp.enable('ruff')
+
+vim.lsp.config('arduino_language_server', {
     cmd = {
         "arduino-language-server",
         "-cli-config",
@@ -286,6 +256,22 @@ lspconfig.arduino_language_server.setup({
     on_attach = on_attach,
     handlers = handlers,
 })
-lspconfig.asm_lsp.setup({ on_attach = on_attach, handlers = handlers })
-lspconfig.julials.setup({ on_attach = on_attach, handlers = handlers })
-lspconfig.hls.setup({ on_attach = on_attach, handlers = handlers })
+vim.lsp.enable('arduino_langage_server')
+
+vim.lsp.config('hls', {
+    on_attach = on_attach,
+    handlers = handlers,
+    settings = {
+        haskell = {
+            plugin = {
+                semanticTokens = {
+                    globalOn = true,
+                },
+            },
+        }
+    }
+})
+vim.lsp.enable('hls')
+
+vim.lsp.config('rust_analyzer', { on_attach = on_attach, handlers = handlers })
+vim.lsp.enable('rust_analyzer')

@@ -1,11 +1,12 @@
 [General]
+additional_path_entires=
 frontend=widgetsboxmodel
 fuzzy=true
 hotkey=Ctrl+Space
 memoryDecay=0.75
 notifiedUnsupportedHotkey=true
 separators="[\\s\\\\\\/\\-\\[\\](){}#!?<>\"'=+*.:,;_]+"
-showTray=true
+showTray=false
 telemetry=false
 terminal=Kitty
 
@@ -40,8 +41,13 @@ enabled=true
 parsing_mode=0
 trigger="="
 
+[chromium]
+enabled=false
+
 [clipboard]
 enabled=false
+persistent=true
+trigger=clip
 
 [color]
 enabled=true
@@ -51,6 +57,7 @@ enabled=true
 
 [datetime]
 enabled=true
+show_date_on_empty_query=true
 
 [debug]
 enabled=false
@@ -59,7 +66,8 @@ enabled=false
 enabled=true
 
 [docs]
-enabled=true
+enabled=false
+global_handler_enabled=true
 
 [emoji]
 enabled=true
@@ -69,8 +77,30 @@ use_derived=true
 
 [files]
 enabled=true
+fs_browsers_show_dirs_first=false
 fuzzy=true
 global_handler_enabled=true
+home\roma57\Documents\followSymlinks=false
+home\roma57\Documents\indexhidden=false
+home\roma57\Documents\maxDepth=255
+home\roma57\Documents\mimeFilters=inode/directory, application/*, image/*, video/*, audio/*
+home\roma57\Documents\nameFilters=.*/venv/.*, .*/build/.*, .*/debug/.*, .*/src/.*, .*/tests/.*
+home\roma57\Documents\scanInterval=5
+home\roma57\Documents\useFileSystemWatches=false
+home\roma57\Downloads\followSymlinks=false
+home\roma57\Downloads\indexhidden=false
+home\roma57\Downloads\maxDepth=255
+home\roma57\Downloads\mimeFilters=inode/directory, application/*, video/*, image/*
+home\roma57\Downloads\nameFilters=firefox/*, gtk/*, wayfire/*, cpython/*, yandex-music-api/*, Telegram Desktop/*
+home\roma57\Downloads\scanInterval=5
+home\roma57\Downloads\useFileSystemWatches=false
+home\roma57\Projects\followSymlinks=false
+home\roma57\Projects\indexhidden=false
+home\roma57\Projects\maxDepth=255
+home\roma57\Projects\mimeFilters=inode/directory
+home\roma57\Projects\nameFilters=.*/build/, .*/pyenv
+home\roma57\Projects\scanInterval=5
+home\roma57\Projects\useFileSystemWatches=false
 home\roma57\followSymlinks=false
 home\roma57\indexhidden=false
 home\roma57\maxDepth=255
@@ -78,7 +108,8 @@ home\roma57\mimeFilters=inode/directory, application/*, audio/*, video/*, image/
 home\roma57\nameFilters=@Invalid()
 home\roma57\scanInterval=10
 home\roma57\useFileSystemWatches=false
-paths=/home/roma57
+index_file_path=true
+paths=/home/roma57/Documents, /home/roma57/Downloads
 
 [goldendict]
 enabled=false
@@ -103,29 +134,33 @@ enabled=true
 watchSources=true
 
 [python.arch_wiki]
-enabled=true
+enabled=false
+
+[python.aur]
+enabled=false
 
 [python.color]
-enabled=true
+enabled=false
 
 [python.copyq]
 enabled=true
 
 [python.dice_roll]
-enabled=true
+enabled=false
 
 [python.emoji]
-enabled=true
+enabled=false
+global_handler_enabled=false
 use_derived=false
 
 [python.pacman]
 enabled=false
 
 [python.tex_to_unicode]
-enabled=true
+enabled=false
 
 [python.translators]
-enabled=true
+enabled=false
 lang=ru
 
 [python_eval]
@@ -151,7 +186,7 @@ enabled=false
 enabled=true
 
 [timer]
-enabled=true
+enabled=false
 trigger_enabled=true
 
 [timezones]
@@ -166,10 +201,10 @@ translator=google
 enabled=false
 
 [urlhandler]
-enabled=true
+enabled=false
 
 [websearch]
-enabled=true
+enabled=false
 
 [widgetsboxmodel]
 alwaysOnTop=true
@@ -177,17 +212,29 @@ clearOnHide=true
 clientShadow=false
 darkTheme=Sweet
 displayIcons=true
+displayScrollbar=true
+followCursor=false
+hideOnFocusLoss=true
+historySearch=true
+itemCount=5
+lightTheme=Sweet
+quitOnClose=false
+showCentered=false
+showFallbacksOnEmpty=true
+systemShadow=true
+theme=Sweet
+windowPosition=@Point(627 216)
+
+[widgetsboxmodel-ng]
+alwaysOnTop=true
+clearOnHide=true
 displayScrollbar=false
 followCursor=true
 hideOnFocusLoss=true
 historySearch=true
 itemCount=5
-quitOnClose=false
+lightTheme=Nord Light
 showCentered=true
-showFallbacksOnEmpty=true
-systemShadow=true
-theme=Sweet
-windowPosition=@Point(627 216)
 
 [wikipedia]
 enabled=true
