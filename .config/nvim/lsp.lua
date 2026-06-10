@@ -216,7 +216,7 @@ lspconfig.ccls.setup {
 ]]
 --
 
-vim.lsp.config('clangd', {
+vim.lsp.config("clangd", {
     on_attach = function(client, bufnr)
         on_attach(client, bufnr)
         vim.keymap.set("n", "<F2>", function()
@@ -225,9 +225,9 @@ vim.lsp.config('clangd', {
     end,
     handlers = handlers,
 })
-vim.lsp.enable('clangd')
+vim.lsp.enable("clangd")
 
-vim.lsp.config('pylsp', {
+vim.lsp.config("pylsp", {
     on_attach = on_attach,
     handlers = handlers,
     python = {
@@ -236,29 +236,15 @@ vim.lsp.config('pylsp', {
         },
     },
 })
-vim.lsp.enable('pylsp')
+vim.lsp.enable("pylsp")
 
-vim.lsp.config('ruff', { on_attach = on_attach, handlers = handlers })
-vim.lsp.enable('ruff')
-
-vim.lsp.config('arduino_language_server', {
-    cmd = {
-        "arduino-language-server",
-        "-cli-config",
-        "~/.arduino15/arduino-cli.yaml",
-        "-fqbn",
-        "arduino:avr:uno",
-        "-cli",
-        "arduino-cli",
-        -- "-clangd",
-        -- "/home/roma57/.installed/llvm-project/build/bin/clangd",
-    },
+vim.lsp.config("ruff", {
     on_attach = on_attach,
     handlers = handlers,
 })
-vim.lsp.enable('arduino_langage_server')
+vim.lsp.enable("ruff")
 
-vim.lsp.config('hls', {
+vim.lsp.config("hls", {
     on_attach = on_attach,
     handlers = handlers,
     settings = {
@@ -268,10 +254,31 @@ vim.lsp.config('hls', {
                     globalOn = true,
                 },
             },
-        }
-    }
+        },
+    },
 })
-vim.lsp.enable('hls')
+vim.lsp.enable("hls")
 
-vim.lsp.config('rust_analyzer', { on_attach = on_attach, handlers = handlers })
-vim.lsp.enable('rust_analyzer')
+vim.lsp.config(
+    "rust_analyzer",
+    {
+        on_attach = on_attach,
+        handlers = handlers,
+        settings = { ["rust-analyzer"] = { check = { command = "clippy" } } },
+    }
+)
+vim.lsp.enable("rust_analyzer")
+
+vim.lsp.config("leanls", { on_attach = on_attach, handlers = handlers })
+
+vim.lsp.config("tinymist", {
+    on_attach = on_attach,
+    handlers = handlers,
+    settings = {
+        formatterMode = "typstyle",
+        formatterProseWrap = true,
+        formatterPrintWidth = 120,
+        formatterIndentSize = 2,
+    },
+})
+vim.lsp.enable("tinymist")

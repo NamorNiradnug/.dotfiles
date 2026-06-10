@@ -21,9 +21,10 @@ Plug 'ron-rs/ron.vim'
 " Plug 'godlygeek/tabular'
 " Plug 'preservim/vim-markdown'
 " Plug 'bfredl/nvim-ipy'
-Plug 'kaarmu/typst.vim'
 Plug 'simrat39/rust-tools.nvim'
 Plug 'Shirk/vim-gas'
+Plug 'Julian/lean.nvim'
+Plug 'chomosuke/typst-preview.nvim'
 
 " Just useful stuff
 Plug 'lervag/vimtex'

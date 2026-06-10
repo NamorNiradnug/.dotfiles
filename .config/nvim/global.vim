@@ -65,6 +65,9 @@ require 'onedark'.setup {
         WinBar = {bg = "$none"},
         WinBarNC = {bg = "$none"},
 
+        hsNewtypedef = {fg = "$purple"},
+        hsStructure = {fg = "$purple"},
+
         ["@variable"] = {fg = "$red"},
         ["@error"] = {fg = "$fg"}, -- fmt = "undercurl", sp = "$red"},
         ["@macro"] = {fg = "$purple"},
@@ -102,8 +105,17 @@ require 'lsp_signature'.setup({
 require 'nvim-autopairs'.setup()
 
 vim.api.nvim_create_autocmd('FileType', {
-    pattern = { 'cpp', 'c', 'rs', 'py', 'hs', 'html', 'js', 'markdown', 'lua', 'vim', 'sh', 'bash', 'fish', 'meson', 'json', 'make', 'cmake', 'ninja' },
+    pattern = { 'cpp', 'c', 'rust', 'python', 'haskell', 'html', 'js', 'markdown', 'lua', 'vim', 'sh', 'bash', 'fish', 'meson', 'json', 'make', 'cmake', 'ninja' },
     callback = function() vim.treesitter.start() end,
+})
+
+require("lean").setup({ mappings = true })
+require("typst-preview").setup({
+    invert_colors = "auto",
+    dependencies_bin = {
+        tinymist = "/usr/bin/tinymist",
+        websocat = "/usr/bin/websocat",
+    }
 })
 EOF
 
