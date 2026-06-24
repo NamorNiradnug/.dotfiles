@@ -47,7 +47,7 @@ __add_to_path ~/.ghcup/bin
 
 ## Starship prompt
 if status --is-interactive
-   source ("/usr/bin/starship" init fish --print-full-init | psub)
+   starship init fish | source
 end
 
 ## Functions
@@ -154,7 +154,7 @@ function disass --argument filepath -d "Objdump with less" -w objdump
 end
 
 if status --is-login && test (tty) = /dev/tty1
-    wayfire > .logs/wayfire
+    start-hyprland
 else if status --is-interactive
     if ! set -q NVIM
         fastfetch

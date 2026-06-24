@@ -47,6 +47,8 @@ style = "blue"
 map_symbol = true
 disabled = false
 
+[battery]
+
 [aws]
 symbol = " "
 

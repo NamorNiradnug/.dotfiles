@@ -73,6 +73,7 @@ include "%L"
 <Multi_key> <Q> <Q>                    : "ℚ"   U211A
 <Multi_key> <R> <R>                    : "ℝ"   U211D
 <Multi_key> <C> <C>                    : "ℂ"   U2120
+<Multi_key> <D> <D>                    : "𝔻"   U1D53B
 
 <Multi_key> <C> <a> <p>                : "⋂"   U22C2
 <Multi_key> <C> <u> <p>                : "⋃"   U22C3
@@ -101,6 +102,7 @@ include "%L"
 <Multi_key> <underscore> <i>           : "ᵢ"   U1D62
 <Multi_key> <underscore> <j>           : "ⱼ"   U2C7C
 <Multi_key> <underscore> <m>           : "ₘ"   U2098
+<Multi_key> <underscore> <x>           : "ₓ"   U2093
 
 <Multi_key> <asciicircum> <n>          : "ⁿ"   U207F
 <Multi_key> <asciicircum> <m>          : "ᵐ"   U1D50
@@ -111,5 +113,6 @@ include "%L"
 <Multi_key> <0> <0>                    : "∘"   U2218
 
 <Multi_key> <minus> <minus> <greater>  : "⟶"   U27F6
+<Multi_key> <w> <p>                    : "℘"   U2118
 
 <Multi_key> <s> <h> <r> <u> <g>        : "¯\\_(ツ)_/¯"

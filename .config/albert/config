@@ -84,7 +84,7 @@ home\roma57\Documents\followSymlinks=false
 home\roma57\Documents\indexhidden=false
 home\roma57\Documents\maxDepth=255
 home\roma57\Documents\mimeFilters=inode/directory, application/*, image/*, video/*, audio/*
-home\roma57\Documents\nameFilters=.*/venv/.*, .*/build/.*, .*/debug/.*, .*/src/.*, .*/tests/.*
+home\roma57\Documents\nameFilters=.*/venv/.*, .*/build/.*, .*/debug/.*, .*/src/.*, .*/tests/.*, ysda/os/.*, HSE/caos.*, HSE/rust.*, ysda/cpp*
 home\roma57\Documents\scanInterval=5
 home\roma57\Documents\useFileSystemWatches=false
 home\roma57\Downloads\followSymlinks=false
@@ -157,7 +157,8 @@ use_derived=false
 enabled=false
 
 [python.tex_to_unicode]
-enabled=false
+enabled=true
+trigger=\\
 
 [python.translators]
 enabled=false
@@ -170,10 +171,10 @@ enabled=true
 windowPosition=@Point(0 0)
 
 [system]
-command_lock="swaylock "
+command_lock=hyprlock --grace 5
 command_poweroff=shutdown now
 command_reboot=reboot
-command_suspend=swaylock -f && systemctl suspend -i
+command_suspend=bash -c \"(hyprlock &) && sleep 5 && systemctl suspend -i\"
 enabled=true
 hibernate_enabled=false
 logout_enabled=false
@@ -211,8 +212,10 @@ alwaysOnTop=true
 clearOnHide=true
 clientShadow=false
 darkTheme=Sweet
+debug=false
+disable_input_method=true
 displayIcons=true
-displayScrollbar=true
+displayScrollbar=false
 followCursor=false
 hideOnFocusLoss=true
 historySearch=true
@@ -222,8 +225,7 @@ quitOnClose=false
 showCentered=false
 showFallbacksOnEmpty=true
 systemShadow=true
-theme=Sweet
-windowPosition=@Point(627 216)
+theme=
 
 [widgetsboxmodel-ng]
 alwaysOnTop=true
@@ -234,6 +236,7 @@ hideOnFocusLoss=true
 historySearch=true
 itemCount=5
 lightTheme=Nord Light
+quitOnClose=false
 showCentered=true
 
 [wikipedia]
