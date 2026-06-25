@@ -1,3 +1,14 @@
+function unpacked(array)
+	local i = 1
+	return function()
+		local value = array[i]
+		i = i + 1
+		if value ~= nil then
+			return table.unpack(value)
+		end
+	end
+end
+
 hl.monitor({
 	output = "HDMI-A-1",
 	mode = "2560x1440@120",
@@ -113,18 +124,17 @@ hl.config({
 hl.permission("/usr/bin/grim", "screencopy", "allow")
 hl.permission("/usr/lib/xdg-desktop-portal-hyprland", "screencopy", "allow")
 
-for _, curve in pairs({
+for name, points in unpacked({
 	{ "easeOutQuint", { { 0.23, 1 }, { 0.32, 1 } } },
 	{ "easeInOutCubic", { { 0.65, 0.05 }, { 0.36, 1 } } },
 	{ "linear", { { 0, 0 }, { 1, 1 } } },
 	{ "almostLinear", { { 0.5, 0.5 }, { 0.75, 1 } } },
 	{ "quick", { { 0.15, 0 }, { 0.1, 1 } } },
 }) do
-	local name, points = table.unpack(curve)
 	hl.curve(name, { type = "bezier", points = points })
 end
 
-for _, animation in pairs({
+for leaf, speed, bezier, style in unpacked({
 	{ "global", 10, "default" },
 	{ "border", 5.39, "easeOutQuint" },
 	{ "windows", 4.79, "easeOutQuint" },
@@ -144,7 +154,6 @@ for _, animation in pairs({
 	{ "workspacesOut", 2.5, "almostLinear", "fade" },
 	{ "zoomFactor", 7, "quick" },
 }) do
-	local leaf, speed, bezier, style = table.unpack(animation)
 	hl.animation({ leaf = leaf, enabled = true, speed = speed, bezier = bezier, style = style })
 end
 
@@ -170,7 +179,7 @@ function mod(key)
 	return "SUPER + " .. key
 end
 
-for _, bind in pairs({
+for key, command in unpacked({
 	{ "Return", "kitty" },
 	{ "E", "nautilus" },
 	{ "SUPER_L", "albert toggle" },
@@ -178,7 +187,6 @@ for _, bind in pairs({
 	{ "A", "pavucontrol" },
 	{ "B", "blueman-manager" },
 }) do
-	local key, command = table.unpack(bind)
 	hl.bind(mod(key), hl.dsp.exec_cmd(command), { release = true })
 end
 
@@ -202,13 +210,12 @@ hl.bind("SHIFT + Print", screenshot('grim -c -g "$(slurp)" %f && wl-copy < %f'))
 
 hl.bind("CONTROL + ALT + Backspace", hl.dsp.exit())
 
-for _, movebind in pairs({
+for arrow_key, vim_key, direction in unpacked({
 	{ "left", "H", "l" },
 	{ "right", "L", "r" },
 	{ "up", "K", "u" },
 	{ "down", "J", "d" },
 }) do
-	local arrow_key, vim_key, direction = table.unpack(movebind)
 	local focus_dsp = hl.dsp.focus({ direction = direction })
 	hl.bind(mod(arrow_key), focus_dsp)
 	hl.bind(mod(vim_key), focus_dsp)
@@ -222,7 +229,7 @@ end
 hl.bind(mod("mouse:272"), hl.dsp.window.drag(), { mouse = true })
 hl.bind(mod("mouse:273"), hl.dsp.window.resize(), { mouse = true })
 
-for _, locked_bind in pairs({
+for key, command, repeating in unpacked({
 	{ "XF86AudioRaiseVolume", "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+", true },
 	{ "XF86AudioLowerVolume", "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-", true },
 	{ "XF86AudioMute", "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle", true },
@@ -235,7 +242,6 @@ for _, locked_bind in pairs({
 	{ "XF86AudioPlay", "playerctl play-pause" },
 	{ "XF86AudioPrev", "playerctl previous" },
 }) do
-	local key, command, repeating = table.unpack(locked_bind)
 	hl.bind(key, hl.dsp.exec_cmd(command), { locked = true, repeating = repeating })
 end
 
