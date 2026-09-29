@@ -19,7 +19,8 @@ hl.monitor({
 
 hl.monitor({
 	output = "eDP-1",
-	disabled = true,
+	mode = "preferred",
+	disabled = false,
 	position = "auto",
 	scale = 1,
 })
@@ -41,7 +42,7 @@ hl.config({
 
 	render = {
 		cm_auto_hdr = 2,
-		direct_scanout = 1,
+		direct_scanout = true,
 	},
 
 	general = {
@@ -90,6 +91,7 @@ hl.config({
 		animate_manual_resizes = true,
 		animate_mouse_windowdragging = true,
 		session_lock_xray = true,
+		session_lock_blur = true,
 		focus_on_activate = true,
 		font_family = "JetBrains Mono, 20pt",
 	},
@@ -109,6 +111,11 @@ hl.config({
 		touchpad = {
 			natural_scroll = false,
 		},
+
+		tablet = {
+			relative_input = true,
+			left_handed = true,
+		},
 	},
 
 	gestures = {
@@ -118,6 +125,14 @@ hl.config({
 	animations = {
 		enabled = true,
 		workspace_wraparound = true,
+	},
+
+	cursor = {
+		inactive_timeout = 5,
+	},
+
+	debug = {
+		disable_logs = false,
 	},
 })
 
@@ -169,7 +184,7 @@ hl.on("hyprland.start", function()
 		"albert",
 		"copyq --start-server",
 		"kdeconnectd",
-		"swaybg --image /usr/share/wallpapers/MilkyWay/contents/images/5120x2880.png",
+		"swaybg --image ~/.local/share/wallpapers/MilkyWay.png",
 	}) do
 		hl.exec_cmd(command)
 	end
@@ -183,7 +198,7 @@ for key, command in unpacked({
 	{ "Return", "kitty" },
 	{ "E", "nautilus" },
 	{ "SUPER_L", "albert toggle" },
-	{ "SHIFT + L", "hyprlock" },
+	{ "SHIFT + L", "hyprlock -g 5" },
 	{ "A", "pavucontrol" },
 	{ "B", "blueman-manager" },
 }) do
@@ -195,13 +210,13 @@ hl.bind(mod("Q"), hl.dsp.window.close(), { release = true })
 hl.bind(mod("F"), hl.dsp.window.fullscreen(), { release = true })
 hl.bind(mod("V"), hl.dsp.window.float(), { release = true })
 hl.bind(mod("Z"), hl.dsp.layout("togglesplit"))
+hl.bind(mod("X"), hl.dsp.layout("swapsplit"))
 
 function screenshot(command_pattern)
 	return function()
 		local filepath = os.date("~/Pictures/screenshot_%Y-%m-%d-%H%M%S.png")
 		local command = string.gsub(command_pattern, "%%f", filepath)
 		hl.exec_cmd(command)
-		hl.notification.create({ text = command, timeout = 10000, icon = "info" })
 	end
 end
 
@@ -236,7 +251,6 @@ for key, command, repeating in unpacked({
 	{ "XF86AudioMicMute", "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle", true },
 	{ "XF86MonBrightnessUp", "brightnessctl -e4 -n2 set 5%+", true },
 	{ "XF86MonBrightnessDown", "brightnessctl -e4 -n2 set 5%-", true },
-
 	{ "XF86AudioNext", "playerctl next" },
 	{ "XF86AudioPause", "playerctl play-pause" },
 	{ "XF86AudioPlay", "playerctl play-pause" },

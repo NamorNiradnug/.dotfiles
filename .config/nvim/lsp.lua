@@ -33,14 +33,7 @@ local icons = {
 }
 
 local cmp = require("cmp")
-local luasnip = require("luasnip")
 local navic = require("nvim-navic")
-
-luasnip.config.setup({
-    enable_autosnippets = true,
-})
-
-require("luasnip.loaders.from_vscode").lazy_load()
 
 navic.setup({
     icons = icons,
@@ -57,11 +50,6 @@ local has_words_before = function()
 end
 
 cmp.setup({
-    snippet = {
-        expand = function(args)
-            luasnip.lsp_expand(args.body)
-        end,
-    },
     mapping = cmp.mapping.preset.insert({
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
         ["<Right>"] = cmp.mapping.confirm({ select = false }),
@@ -79,12 +67,10 @@ cmp.setup({
         end, { "i", "s" }),
         ["<C-Tab>"] = cmp.mapping.complete(),
     }),
-    sources = cmp.config.sources({
+    sources = {
         { name = "nvim_lsp" },
-        { name = "luasnip" },
         { name = "buffer" },
-        { name = "nvim_lsp_signature_help" },
-    }),
+    },
     formatting = {
         format = function(entry, vim_item)
             -- Kind icons
@@ -93,7 +79,6 @@ cmp.setup({
             vim_item.menu = ({
                 buffer = "[Buffer]",
                 nvim_lsp = "[LSP]",
-                luasnip = "[LuaSnip]",
                 nvim_lua = "[Lua]",
                 latex_symbols = "[LaTeX]",
                 vsnip = "[vsnip]",

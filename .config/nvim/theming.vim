@@ -7,8 +7,8 @@ set shiftwidth=4
 set expandtab
 set scrolloff=10
 
-set foldtext=getline(v:foldstart).'\ ...\ '.trim(getline(v:foldend))
-set fillchars=fold:\ ,stl:━,stlnc:━,vert:┃
+set foldtext=
+set fillchars=fold:.,stl:━,stlnc:━,vert:┃
 set display+=lastline
 set list
 set listchars=trail:•,tab:»\ ,leadmultispace:┊\ \ \ ,extends:…,precedes:…
@@ -48,7 +48,6 @@ function OnStartup()
     set winfixheight
     :wincmd J
     :term
-    " :NvimTreeToggle
     call win_gotoid(winid)
     autocmd BufWinEnter,WinEnter term://* startinsert
 endfunction
